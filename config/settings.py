@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-
+from cdn.conf import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
-print(SECRET_KEY)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
 ENV_ALLOWED_HOST = os.environ.get("DJANGO_ALLOWED_HOST") or None
@@ -45,8 +45,11 @@ PROJECT_APPS = [
     "authors.apps.AuthorsConfig",
     "products.apps.ProductsConfig",
     "files.apps.FilesConfig",
+    "cdn.apps.CdnConfig",
 ]
-THIRDPARTY_APPS = []
+THIRDPARTY_APPS = [
+    "storages",
+]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRDPARTY_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -155,7 +158,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = []
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles-cdn"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
