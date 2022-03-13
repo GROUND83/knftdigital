@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block page_name %}
+Home
+{% endblock page_name %}
+
+{% block content %}
+<div>
+  <h1>{{author.name}}</h1>
+  <h3>{{author.description|safe}}</h3>
+</div>
+
+{% endblock %}

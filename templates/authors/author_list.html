@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block page_name %} home {% endblock page_name %}
+{%block content %}
+
+<div class="flex flex-col items-center w-full pt-24">
+  {% for author in authors %}
+  <h1>{{author.name}}</h1>
+  <img src="/media/{{author.avator.thumnail}}" />
+  <p>{{author.authDes}}</p>
+  <p>{{author.desTitle}}</p>
+  <p>{{author.description|safe}}</p>
+  {% endfor %}
+
+  <h5>
+    {% if page_obj.has_previous %}
+    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+    {% if page_obj.has_next  %}
+    <a href="?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+  </h5>
+
+</div>
+{% endblock content %}

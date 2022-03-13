@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block page_name %}
+{{product.title}}
+{% endblock page_name %}
+
+{% block content %}
+<div class="flex flex-col items-center w-full pt-24">
+  <div class="flex flex-col items-stretch justify-between w-full" style="max-width: 1200px; ">
+    <div class="grid grid-cols-2">
+      <div class="flex flex-col items-center overflow-hidden rounded-md ">
+        {% if product.image.content_type == "video/mp4" %}
+        <video autoplay muted loop poster="/media/{{product.image.thumnail}}">
+          <source src="/media/{{product.image.file800}}" />
+        </video>
+        {% elif product.image.content_type == "image/jpeg" or product.image.content_type == "image/gif" %}
+        <img src="/media/{{product.image.file800}}" />
+        {% endif %}
+      </div>
+      <div class="flex flex-col items-start justify-between px-6">
+        <div>
+          <p class="text-lg font-bold text-white">{{product.theme}}</p>
+          <h2 class="mt-3 text-3xl font-bold text-white">{{product.title}}</h2>
+          <p class="mt-3 text-justify text-slate500">{{product.description}}</p>
+        </div>
+        <div class="flex flex-col items-start">
+
+          <a href="/author/{{product.author.id}}" class="flex flex-row items-center">
+            <!-- <img src="/media/{{product.author.avator.thumnail}}" alt=" avator" style="width: 50px;height:50px" class="border-2 rounded-full border-amber-300 " /> -->
+            <span class="text-slate500" style="width: 100px;">created by</span>
+            <span class=" text-primary">{{product.author}}</span>
+          </a>
+
+          <div class="flex flex-col items-start justify-between w-full text-sm text-slate500 bg-slate-700">
+            <div class="flex flex-row items-center">
+              <p style="width: 100px;">created</p>
+              <span class="">
+                {{product.creationDate|date:'Y-m-d'}}
+              </span>
+            </div>
+            <div class="flex flex-row items-center">
+              <p style="width: 100px;">dimensions</p>
+              <span class="">{{product.dimensionsx}}</span>
+              <span class="ml-3">x</span>
+              <span class="ml-3">{{product.dimensionsy}}</span>
+            </div>
+            <div class="flex flex-row items-center w-full">
+              <p style="width: 100px;">tags</p>
+              <div class="flex flex-row flex-wrap items-center flex-1">
+                {% for tag in product.tags.all %}
+                <span class="mr-3">
+                  {{tag.name}}
+                </span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="py-12">
+    <p class="text-white">YOU MAY ALSO LIKE</p>
+    <div id="image-slider" class="w-full splide">
+      <div class="w-full splide__track">
+        <ul class="w-full splide__list">
+          {% for otherProduct in otherProducts %}
+          <li class="splide__slide">
+
+            {% if otherProduct.image.content_type == "video/mp4" %}
+            <video autoplay muted loop poster="/media/{{product.image.thumnail}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+              <source src="/media/{{otherProduct.image.file360}}" />
+            </video>
+            {% elif otherProduct.image.content_type == "image/jpeg" or otherProduct.image.content_type == "image/gif" %}
+            <img src="/media/{{otherProduct.image.file360}}" style="height: 300px;width: 300px;" class="cursor-pointer " />
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      new Splide('#image-slider', {
+        perPage: 3,
+        rewind: true,
+        fixedWidth: 280,
+        fixedHeight: 280,
+        gap: 10,
+        rewind: true,
+        pagination: false,
+        cover: true,
+        isNavigation: true,
+      }).mount();
+    });
+    // var splide = new Splide('.splide', {
+    //   type: 'loop',
+    //   perPage: 3,
+    //   perMove: 1,
+    // });
+
+    // splide.mount();
+  </script>
+</div>
+
+
+{% endblock %}

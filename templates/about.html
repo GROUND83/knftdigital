@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %} about {% endblock page_name %}
+
+{%block content %}
+<div class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg"%}') no-repeat center center;height:300px;">
+    <div class="flex flex-col items-center justify-center h-full ">
+      <h2 class="text-6xl font-bold text-white ">K-NFT,</h2>
+      <p class="mt-6 text-xl text-slate500 font-extralight">
+        Korean NFT Art Story Platform
+      </p>
+    </div>
+  </div>
+  <section class="flex flex-col items-center justify-center py-24 " style="max-width:1200px;">
+    <h2 class="mt-2 text-5xl text-white">What we are Building?</h2>
+    <p class="mt-12 text-lg font-light leading-9 text-justify text-slate500">
+      K-NFT is a gateway to the world of Korean art, a digital space resplendent with the energy and vitality of Korean artists. Here, Korean calligraphers, illustrators, designers, and painters have an opportunity to promote their work to a global audience and give their pieces new life on a virtual platform without sacrificing the harmony, excitement, and mirth that define them.
+    </p>
+    <p class="mt-12 text-lg font-light leading-9 text-justify text-slate500">
+      K-NFTs are a fundamental aspect of Korea’s digital story, and this website is one of its chapters.
+    </p>
+  </section>
+  <section class="flex flex-col items-center justify-center py-24 " style="max-width:1200px;">
+    <h2 class="mt-2 text-5xl text-white">Our Teams</h2>
+    <div class="flex flex-col items-center mt-24">
+      <div class="flex flex-row items-start ">
+        <img src="{% static 'img/jaehee.jpg' %}" alt="jaehee_profil" style="width: 200px;height: 200px; border-radius: 200px;" />
+        <div class="flex flex-col items-start justify-between h-full ml-12">
+          <div>
+            <p class="text-2xl text-white">Jaehee Song</p>
+            <p class="mt-1 text-sm text-slate500">
+              Co-founder, Managing director
+            </p>
+          </div>
+          <div class="flex flex-row items-center mt-3">
+            <a href="https://www.facebook.com/abraham.song.50" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center rounded-full " style="width: 30px; height: 30px;">
+              <i class="text-2xl bi bi-facebook text-primary hover:text-opacity-50"></i>
+            </a>
+
+            <a href="https://twitter.com/jsong01" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center ml-1 rounded-full 0" style="width: 30px; height: 30px;">
+              <i class="text-2xl bi bi-twitter text-primary hover:text-opacity-50"></i>
+            </a>
+          </div>
+          <p class="mt-3 text-slate500">
+            Jaehee Song lives in Seatte, Washington, and enjoys outdoor activities like backcountry skiing, rock climbing, and hiking. He values community spirit and selflessness, and as a data engineer with over 20 years of experience, he enjoys the insightful nature of data analysis and the clarity it can provide. Song is also a certified blockchain and NFT expert who cooperates with Korean start-ups to expand their business to the American market.
+          </p>
+
+        </div>
+      </div>
+      <div class="flex flex-row items-start mt-12">
+        <img src="{% static 'img/eugene.jpg' %}" alt="jaehee_profil" style="width: 200px;height: 200px; border-radius: 200px;" />
+        <div class="flex flex-col items-start justify-between h-full ml-12">
+          <div>
+            <p class="text-2xl text-white">Eugene KIM</p>
+            <p class="mt-1 text-sm text-slate500">
+              Co-founder, Marketing director
+            </p>
+          </div>
+          <div class="flex flex-row items-center mt-3">
+            <a href="https://www.linkedin.com/in/eugene-kim-59116925" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center rounded-full " style="width: 30px; height: 30px;">
+              <i class="text-2xl bi bi-facebook text-primary hover:text-opacity-50"></i>
+            </a>
+            <a href="https://www.facebook.com/eugeneKIM7500" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center ml-1 rounded-full 0" style="width: 30px; height: 30px;">
+              <i class="text-2xl fab fa-linkedin text-primary hover:text-opacity-50"></i>
+            </a>
+            <a href="https://www.instagram.com/eugenekim" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center ml-1 rounded-full 0" style="width: 30px; height: 30px;">
+              <i class="text-2xl bi bi-instagram text-primary hover:text-opacity-50"></i>
+            </a>
+          </div>
+          <p class="mt-3 text-slate500">
+            Co-founder and global marketing director Eugene Kim designs the user experience as a UX architect and curates the NFT collection of this project. He has experience with Human-Computer Interaction (HCI) and researches the virtual economy system and the impact of metaverse technology on the behavior of future consumers. Kim also works with several business development projects and focuses on discovering and nurturing technology-based start-ups with high growth potential.
+          </p>
+
+        </div>
+      </div>
+      <div class="flex flex-row items-start mt-12">
+        <img src="{% static 'img/geunwook.jpg' %}" alt="jaehee_profil" style="width: 200px;height: 200px; border-radius: 200px;" />
+        <div class="flex flex-col items-start justify-between h-full ml-12">
+          <div>
+            <p class="text-2xl text-white">Geun-wook LEE</p>
+            <p class="mt-1 text-sm text-slate500">
+              Co-founder, Managing director
+            </p>
+          </div>
+          <!-- <div class="flex flex-row items-center mt-3">
+            <a href="https://www.facebook.com/abraham.song.50" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center rounded-full " style="width: 30px; height: 30px;">
+              <i class="text-2xl bi bi-facebook text-primary hover:text-opacity-50"></i>
+            </a>
+
+            <a href="https://twitter.com/jsong01" target="_blank" rel="noreferrer" class="flex flex-col items-center justify-center ml-1 rounded-full 0" style="width: 30px; height: 30px;">
+              <i class="text-2xl bi bi-facebook text-primary hover:text-opacity-50"></i>
+            </a>
+          </div> -->
+          <p class="mt-3 text-slate500">
+            Geun-wook Lee works primarily with culture and content planning. He is CEO of Darangeo Story, a storytelling company that works with cultural content planning, and an adjunct professor at the Graduate School of Culture at Sungkonghoe University. Lee works with cultural planning related to literature and as an art critic, storytelling planner, and culture and arts education TA.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+</div>
+
+
+
+
+{% endblock content %}

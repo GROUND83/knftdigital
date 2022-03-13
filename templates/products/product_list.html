@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_name %} collection {% endblock page_name %}
+{%block content %}
+
+<div class="flex flex-col items-center w-full ">
+  <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg" %}') no-repeat center center; height:300px;">
+    <div class="flex flex-col items-center justify-center h-full">
+      <h2 class="text-6xl font-bold text-white ">K-NFT Art Gallery</h2>
+      <p class="mt-6 text-xl text-slate500 font-extralight">
+        {{products.count}} works
+      </p>
+    </div>
+  </div>
+  <div class="py-12">
+    <p>ㅅㅓ치폼</p>
+  </div>
+  <section style="max-width:1200px;" class="grid w-full grid-cols-3 gap-24">
+    {% for product in products  %}
+    <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
+      <div id="fontCard" class="flex flex-col items-start w-full h-full">
+        <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
+          {% if product.image.content_type == "video/mp4" %}
+          <video autoplay muted loop poster="/media/{{product.image.thumnail}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+            <source src="/media/{{product.image.file360}}" />
+          </video>
+          {% elif product.image.content_type == "image/jpeg" or product.image.content_type == "image/gif" %}
+          <img src="/media/{{product.image.file360}}" style="height: 300px;width: 300px;" class="cursor-pointer " />
+          {% endif %}
+        </div>
+        <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
+          <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
+          <div class="flex flex-row items-end justify-between w-full">
+            <div class="flex flex-col items-start">
+              <p class="">Reserve Price</p>
+              <p class="text-xl font-bold">{{product.price}} ETH</p>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer">
+              <img src="/media/{{product.author.avator.thumnail}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
+              <p>{{product.author}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="backCard" class="flex-col items-start justify-between hidden w-full h-full p-6 transition-all duration-200 ease-in-out opacity-0 cursor-pointer bg-primary">
+        <div class="flex flex-col items-start">
+          <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
+          <p class="mt-3 text-justify line-clamp-4">{{product.description}}</p>
+        </div>
+        <a href="/product/{{product.id}}" class="px-6 py-2 bg-white text-primary">
+          more
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  <h5>
+    {% if page_obj.has_previous %}
+    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+    {% if page_obj.has_next  %}
+    <a href="?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+
+  </h5>
+  <script>
+    const card = document.querySelectorAll("#card");
+    card.forEach(function(cardWrap) {
+
+      const fontCard = cardWrap.parentNode
+      const backCard = cardWrap.parentNode.nextSibling.nextSibling
+      console.log(fontCard, backCard)
+      cardWrap.addEventListener("mouseenter", function(event) {
+
+        console.log("enter")
+        let backCardcheck = backCard.classList.contains("opacity-100");
+        if (backCardcheck) {
+          backCard.classList.replace("opacity-100", "opacity-0")
+          backCard.classList.replace("flex", "hidden")
+          fontCard.classList.replace("hidden", "flex")
+        } else {
+          backCard.classList.replace("opacity-0", "opacity-100")
+          backCard.classList.replace("hidden", "flex")
+          fontCard.classList.replace("flex", "hidden")
+        }
+      });
+      backCard.addEventListener("mouseleave", function(event) {
+        // highlight the mouseenter target
+        // event.target.style.color = "purple";
+        console.log("mouseleave")
+
+        let check = backCard.classList.contains("opacity-100");
+        if (check) {
+          backCard.classList.replace("opacity-100", "opacity-0")
+          backCard.classList.replace("flex", "hidden")
+          fontCard.classList.replace("hidden", "flex")
+        } else {
+          backCard.classList.replace("opacity-0", "opacity-100")
+          backCard.classList.replace("hidden", "flex")
+          fontCard.classList.replace("flex", "hidden")
+        }
+      })
+    });
+    // // This handler will be executed every time the cursor
+    // // is moved over a different list item
+    // card.addEventListener("mouseover", function( event ) {
+    //   // highlight the mouseover target
+    //   event.target.style.color = "orange";
+    //   console.log("leave")
+    //   // reset the color after a short delay
+    //   // setTimeout(function() {
+    //   //   event.target.style.color = "";
+    //   // }, 500);
+    // }, false);
+  </script>
+
+</div>
+{% endblock content %}
