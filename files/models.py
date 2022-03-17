@@ -25,7 +25,6 @@ class File(core_models.TimeStampedModel):
     def get_detail_file_path(self, filename):
         return os.path.join(
             self.author,
-            filename,
         )
 
     class Meta:
