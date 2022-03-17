@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+from ast import Not
 import os
 from pathlib import Path
 
@@ -23,10 +24,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
+# print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
+# DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
+DEBUG = True
 ENV_ALLOWED_HOST = os.environ.get("DJANGO_ALLOWED_HOST") or None
-ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "127.0.0.1",
+    "147.182.244.81",
+    "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
+]
 ALLOWED_HOSTS += [os.environ.get("DJANGO_ALLOWED_HOST")]
 
 
@@ -45,6 +53,7 @@ PROJECT_APPS = [
     "authors.apps.AuthorsConfig",
     "products.apps.ProductsConfig",
     "files.apps.FilesConfig",
+    "contacts.apps.ContactsConfig",
 ]
 THIRDPARTY_APPS = [
     "storages",
@@ -80,44 +89,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
-
-POSTGRES_DB = os.environ.get("POSTGRES_DB")  # database name
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")  # database user password
-POSTGRES_USER = os.environ.get("POSTGRES_USER")  # database username
-POSTGRES_HOST = os.environ.get("POSTGRES_HOST")  # database host
-POSTGRES_PORT = os.environ.get("POSTGRES_PORT")  # database port
-
-POSTGRES_READY = (
-    POSTGRES_DB is not None
-    and POSTGRES_PASSWORD is not None
-    and POSTGRES_USER is not None
-    and POSTGRES_HOST is not None
-    and POSTGRES_PORT is not None
-)
-
-if POSTGRES_READY:
+if DEBUG is Not:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": POSTGRES_DB,
-            "USER": POSTGRES_USER,
-            "PASSWORD": POSTGRES_PASSWORD,
-            "HOST": POSTGRES_HOST,
-            "PORT": POSTGRES_PORT,
+            "NAME": "db",
+            "USER": "db",
+            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+            "HOST": "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
+            "PORT": "25060",
         }
     }
-
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -155,8 +145,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = "/static/"
 STATICFILES_DIRS = []
-STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles-cdn"
-from config.cdn.conf import *
+STATIC_ROOT = BASE_DIR / "staticfiles-cdn"
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = "knft-storage"
+AWS_S3_ENDPOINT_URL = "https://sfo3.digitaloceanspaces.com"
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400",
+}
+AWS_LOCATION = f"https://{AWS_STORAGE_BUCKET_NAME}.sfo3.digitaloceanspaces.com"
+AWS_DEFAULT_ACL = "public-read"
+
+DEFAULT_FILE_STORAGE = "config.cdn.backends.MediaRootS3Boto3Storage"
+STATICFILES_STORAGE = "config.cdn.backends.StaticRootS3Boto3Storage"
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type

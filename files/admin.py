@@ -17,6 +17,22 @@ class FileAdmin(admin.ModelAdmin):
         "file360",
         "file800",
     )
+    fieldsets = (
+        (
+            "기본정보",
+            {
+                "fields": (
+                    "author",
+                    "content_type",
+                    "file",
+                    "thumnail",
+                    "file360",
+                    "file800",
+                )
+            },
+        ),
+    )
+
     # exclude = (
     #     "thumnail",
     #     "file100",

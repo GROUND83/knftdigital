@@ -2,10 +2,10 @@
 {% block page_name %} home {% endblock page_name %}
 {%block content %}
 
-<div class="flex flex-col items-center w-full pt-24">
+<div class="flex flex-col items-center w-full pt-24 text-white">
   {% for author in authors %}
   <h1>{{author.name}}</h1>
-  <img src="/media/{{author.avator.thumnail}}" />
+  <img src="{{author.avator.file360.url}}" />
   <p>{{author.authDes}}</p>
   <p>{{author.desTitle}}</p>
   <p>{{author.description|safe}}</p>

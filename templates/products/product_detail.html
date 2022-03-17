@@ -8,12 +8,12 @@
   <div class="flex flex-col items-stretch justify-between w-full" style="max-width: 1200px; ">
     <div class="grid grid-cols-2">
       <div class="flex flex-col items-center overflow-hidden rounded-md ">
-        {% if product.image.content_type == "video/mp4" %}
-        <video autoplay muted loop poster="/media/{{product.image.thumnail}}">
-          <source src="/media/{{product.image.file800}}" />
+        {% if product.image.content_type == "mp4" %}
+        <video autoplay muted loop poster="{{product.image.thumnail.url}}">
+          <source src="{{product.image.file800.url}}" />
         </video>
-        {% elif product.image.content_type == "image/jpeg" or product.image.content_type == "image/gif" %}
-        <img src="/media/{{product.image.file800}}" />
+        {% elif product.image.content_type == "jpeg" or product.image.content_type == "gif" %}
+        <img src="{{product.image.file800.url}}" />
         {% endif %}
       </div>
       <div class="flex flex-col items-start justify-between px-6">
@@ -62,25 +62,25 @@
 
   <div class="py-12">
     <p class="text-white">YOU MAY ALSO LIKE</p>
+    <!--  -->
     <div id="image-slider" class="w-full splide">
       <div class="w-full splide__track">
         <ul class="w-full splide__list">
           {% for otherProduct in otherProducts %}
           <li class="splide__slide">
-
             {% if otherProduct.image.content_type == "video/mp4" %}
-            <video autoplay muted loop poster="/media/{{product.image.thumnail}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
-              <source src="/media/{{otherProduct.image.file360}}" />
+            <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+              <source src="{{otherProduct.image.file360.url}}" />
             </video>
             {% elif otherProduct.image.content_type == "image/jpeg" or otherProduct.image.content_type == "image/gif" %}
-            <img src="/media/{{otherProduct.image.file360}}" style="height: 300px;width: 300px;" class="cursor-pointer " />
+            <img src="{{otherProduct.image.file360.url}}" style="height: 300px;width: 300px;" class="cursor-pointer " />
             {% endif %}
           </li>
           {% endfor %}
         </ul>
       </div>
     </div>
-
+    <!--  -->
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
