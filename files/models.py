@@ -1,14 +1,6 @@
 from django.db import models
 from core import models as core_models
-
-# import magic
-from django.utils.safestring import mark_safe
-
-# from moviepy.editor import VideoFileClip
-# from mimetypes import guess_type
-# from .resize import resize_gif, resize_jpg, resize_viedo
 import os.path
-from config.settings import MEDIA_ROOT
 
 # Create your models here.
 class File(core_models.TimeStampedModel):
@@ -46,4 +38,4 @@ class File(core_models.TimeStampedModel):
     file800 = models.FileField(upload_to=get_detail_file_path, null=True, blank=True)
 
     def __str__(self):
-        return self.author
+        return self.caption

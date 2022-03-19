@@ -9,14 +9,6 @@ from django.utils.safestring import mark_safe
 
 @admin.register(models.Author)
 class AuthorAdmin(admin.ModelAdmin):
-    readonly_fields = ["headshot_image"]
-
-    def headshot_image(self, obj):
-        return mark_safe(
-            '<img src="/media/{url}" width="100" height="100" />'.format(
-                url=obj.avatar_thumbnail,
-            )
-        )
 
     list_display = (
         "name",
@@ -39,7 +31,6 @@ class AuthorAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "avator",
-                    "headshot_image",
                     "desTitle",
                     "description",
                 )
