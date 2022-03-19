@@ -89,25 +89,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-if DEBUG is Not:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "db",
-            "USER": "db",
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
-            "PORT": "25060",
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "db",
+        "USER": "db",
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
+        "PORT": "25060",
     }
-else:
-    print("local")
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
+}
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#     }
+# }
 # print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -160,8 +159,8 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = f"https://{AWS_STORAGE_BUCKET_NAME}.sfo3.digitaloceanspaces.com"
 AWS_DEFAULT_ACL = "public-read"
 
-# DEFAULT_FILE_STORAGE = "config.cdn.backends.MediaRootS3Boto3Storage"
-# STATICFILES_STORAGE = "config.cdn.backends.StaticRootS3Boto3Storage"
+DEFAULT_FILE_STORAGE = "config.cdn.backends.MediaRootS3Boto3Storage"
+STATICFILES_STORAGE = "config.cdn.backends.StaticRootS3Boto3Storage"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
