@@ -29,6 +29,9 @@ class File(core_models.TimeStampedModel):
             filename,
         )
 
+    def filename(self):
+        return os.path.basename(self.file.name)
+
     class Meta:
         verbose_name = "파일"
         verbose_name_plural = "파일모음"
@@ -46,7 +49,7 @@ class File(core_models.TimeStampedModel):
     file800 = models.FileField(upload_to=get_detail_file_path, null=True, blank=True)
 
     def __str__(self):
-        return self.author
+        return self.filename
 
     # def save(self, *args, **kwargs):
     #     if os.path.isdir(os.path.join(MEDIA_ROOT, f"{self.author}/{self.caption}")):
