@@ -23,7 +23,7 @@
   </div>
 </section>
 {% else%}
-<section class="flex flex-col items-start justify-end w-full min-h-screen py-24" style="background-image: linear-gradient(to right, rgba(29, 31, 35, 1) 10%,  rgba(29, 31, 35, 0.9) 50%, rgba(29, 31, 35, 0.6)  100%), url(/media/{{first_product.image.file800}}); background-repeat: no-repeat;background-position: center;background-size: cover;">
+<section class="flex flex-col items-start justify-end w-full min-h-screen py-24" style="background-image: linear-gradient(to right, rgba(29, 31, 35, 1) 10%,  rgba(29, 31, 35, 0.9) 50%, rgba(29, 31, 35, 0.6)  100%), url({{first_product.image.file800.url}}); background-repeat: no-repeat;background-position: center;background-size: cover;">
   <div class="flex flex-col items-start justify-end w-full h-full px-3 mx-auto mb-24 contianer lg:px-6 md:px-3" style="max-width:1200px;">
     <h2 class="text-6xl font-bold text-white ">
       The sense of the moments
@@ -65,7 +65,7 @@
               <p class="">Reserve Price</p>
               <p class="text-xl font-bold">{{product.price}} ETH</p>
             </div>
-            <a herf="/author/{{product.author.id}}" class="flex flex-col items-center cursor-pointer">
+            <a href="/author/{{product.author.id}}" class="flex flex-col items-center cursor-pointer">
               <img src="{{product.author.avator.thumnail.url}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
               <p>{{product.author}}</p>
             </a>
