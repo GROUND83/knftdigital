@@ -10,8 +10,12 @@
       </p>
       <div class="flex flex-row items-center mt-3">
         <div class="flex flex-row items-center " style="height:40px">
-          <input type="text" class="block h-full px-3 text-black bg-white outline-none" style="height: 40px;width: 250px;" placeholder="Enter yout email" />
-          <button class="h-full px-6 bg-gray-300">Submit</button>
+          <form action='{% url 'contacts:subscription' %}' method="post" class="flex flex-row items-center h-full">
+            {% csrf_token %}
+            <!-- {{form.email}} -->
+            <input id="id_eamil" type="text" name="email" class=" block h-full px-3 text-black bg-white outline-none" style="height: 40px;width: 250px;" placeholder="Enter yout email" />
+            <button class="h-full px-6 bg-gray-300">Submit</button>
+          </form>
         </div>
         <div class="flex flex-row items-center justify-between ml-3 text-white" style="width: 150px;">
           <a href="https://discord.gg/uCaxSSRDVG" target="_blank" rel="noreferrer">

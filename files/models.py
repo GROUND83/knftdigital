@@ -16,15 +16,17 @@ class File(core_models.TimeStampedModel):
     """Photo Model Definition"""
 
     def get_file_path(self, filename):
+        print(self.author)
         return os.path.join(
             self.author,
-            self.caption,
             filename,
         )
 
     def get_detail_file_path(self, filename):
+        print(self.author)
         return os.path.join(
             self.author,
+            filename,
         )
 
     class Meta:
@@ -35,7 +37,7 @@ class File(core_models.TimeStampedModel):
     caption = models.CharField(
         max_length=80, verbose_name="사진이름", null=True, blank=True
     )
-    file = models.FileField(upload_to=get_file_path)
+    file = models.FileField(upload_to=get_file_path, null=True, blank=True)
     content_type = models.CharField(
         max_length=128, editable=True, null=True, blank=True
     )
@@ -44,7 +46,7 @@ class File(core_models.TimeStampedModel):
     file800 = models.FileField(upload_to=get_detail_file_path, null=True, blank=True)
 
     def __str__(self):
-        return self.caption
+        return self.author
 
     # def save(self, *args, **kwargs):
     #     if os.path.isdir(os.path.join(MEDIA_ROOT, f"{self.author}/{self.caption}")):

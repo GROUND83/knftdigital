@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
-DEBUG = True
+DEBUG = False
 ENV_ALLOWED_HOST = os.environ.get("DJANGO_ALLOWED_HOST") or None
 ALLOWED_HOSTS = [
     "0.0.0.0",
@@ -101,6 +101,7 @@ if DEBUG is Not:
         }
     }
 else:
+    print("local")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -144,8 +145,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = "/static/"
-STATICFILES_DIRS = []
-STATIC_ROOT = BASE_DIR / "staticfiles-cdn"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
@@ -157,10 +160,10 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = f"https://{AWS_STORAGE_BUCKET_NAME}.sfo3.digitaloceanspaces.com"
 AWS_DEFAULT_ACL = "public-read"
 
-DEFAULT_FILE_STORAGE = "config.cdn.backends.MediaRootS3Boto3Storage"
-STATICFILES_STORAGE = "config.cdn.backends.StaticRootS3Boto3Storage"
+# DEFAULT_FILE_STORAGE = "config.cdn.backends.MediaRootS3Boto3Storage"
+# STATICFILES_STORAGE = "config.cdn.backends.StaticRootS3Boto3Storage"
 
-
+MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

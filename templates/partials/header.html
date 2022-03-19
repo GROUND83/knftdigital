@@ -1,29 +1,27 @@
 {% load static %}
 
-<header class="absolute top-0 z-30 w-full bg-transparent" style="height:80px; ">
-  <div class="flex flex-row items-center justify-between w-full h-full px-3 mx-auto contianer lg:px-6 md:px-3 " style="max-width: 1200px; ">
-    <a href="{% url "cores:home" %}">
-      <img src="{% static 'img/logo.svg' %}" style="width:100px" />
-    </a>
-    <nav class="h-full text-white">
-      <ul class="flex items-center h-full text-sm font-medium">
-        <li class="ml-6">
-          <a href="{% url "authors:list" %}" class="text-lg hover:text-primary">AUTHOR</a>
-        </li>
-        <li class="ml-6">
-          <a href="{% url "products:productList" %}" class="text-lg hover:text-primary">COLLECTION</a>
-        </li>
-        <li class="ml-6">
-          <a href="{% url "cores:about" %}" class="text-lg hover:text-primary">ABOUT</a>
-        </li>
-        <li class="ml-6">
 
-          <a href="{% url "cores:contact" %}" class="text-lg hover:text-primary">CONTACT</a>
-        </li>
-      </ul>
+<div class=" flex flex-row items-center justify-between w-full h-full px-3 mx-auto contianer lg:px-6 md:px-3 " style="max-width: 1200px; ">
+  <a href="{% url "cores:home" %}">
+    <img src="{% static 'img/logo.svg' %}" style="width:100px" />
+  </a>
+  <nav class="h-full text-white">
+    <ul class="flex items-center h-full text-sm font-medium">
+      <li class="ml-6">
+        <a href="{% url "authors:list" %}" class=" hover:text-primary">AUTHOR</a>
+      </li>
+      <li class="ml-6">
+        <a href="{% url "products:search" %}" class=" hover:text-primary">COLLECTION</a>
+      </li>
+      <li class="ml-6">
+        <a href="{% url "cores:about" %}" class=" hover:text-primary">ABOUT</a>
+      </li>
+      <li class="ml-6">
+
+        <a href="{% url "contacts:contact" %}" class=" hover:text-primary">CONTACT</a>
+      </li>
+    </ul>
 
 
-    </nav>
-  </div>
-
-</header>
+  </nav>
+</div>

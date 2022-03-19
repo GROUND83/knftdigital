@@ -1,25 +1,44 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block page_name %} collection {% endblock page_name %}
 
-{%block content %}
+{% block content %}
+<style>
+  .box-radio-input input[type="radio"] {
+    display: none;
+  }
+
+  .box-radio-input input[type="radio"]+span {
+    display: inline-block;
+    background: #64748B;
+    width: 100%;
+    line-height: 40px;
+    flex: 1;
+    text-align: center;
+
+
+    cursor: pointer;
+  }
+
+  .box-radio-input input[type="radio"]:checked+span {
+    background: #F5C226;
+    color: #fff;
+  }
+</style>
 <div class="flex flex-col items-center w-full ">
   <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg" %}') no-repeat center center; height:300px;">
     <div class="flex flex-col items-center justify-center h-full">
       <h2 class="text-6xl font-bold text-white ">K-NFT Art Gallery</h2>
       <p class="mt-6 text-xl text-slate500 font-extralight">
-        {{products.count}} works
+        works related to #{{tag.name}}
       </p>
     </div>
-    <div class="py-12 bg-white">
-      <form method="get" action="{% url "products:search" %}">
-        {{form.as_p}}
-        <button>Search</button>
-      </form>
-    </div>
   </div>
-  <section style="max-width:1200px;" class="grid w-full grid-cols-3 gap-24">
-    {% for product in products  %}
+
+
+  <section style="max-width:1200px;" class="grid w-full grid-cols-3 gap-24 mt-12 pb-24">
+
+    {% for product in products %}
     <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
       <div id="fontCard" class="flex flex-col items-start w-full h-full">
         <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
@@ -38,10 +57,10 @@
               <p class="">Reserve Price</p>
               <p class="text-xl font-bold">{{product.price}} ETH</p>
             </div>
-            <div class="flex flex-col items-center cursor-pointer">
+            <a href="/author/{{product.author.pk}}" class="flex flex-col items-center cursor-pointer">
               <img src="{{product.author.avator.thumnail.url}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
               <p>{{product.author}}</p>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -57,18 +76,6 @@
     </div>
     {% endfor %}
   </section>
-  <h5>
-    {% if page_obj.has_previous %}
-    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
-    {% endif %}
-
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-
-    {% if page_obj.has_next  %}
-    <a href="?page={{page_obj.next_page_number}}">Next</a>
-    {% endif %}
-
-  </h5>
   <script>
     const card = document.querySelectorAll("#card");
     card.forEach(function(cardWrap) {
@@ -119,6 +126,6 @@
     //   // }, 500);
     // }, false);
   </script>
-
 </div>
+
 {% endblock content %}

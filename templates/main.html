@@ -3,10 +3,10 @@
 
 {%block content %}
 <!-- first -->
-{% if first_product.image.content_type == "video/mp4" %}
+{% if first_product.image.content_type == "mp4" %}
 <section class="relative w-full h-screen m-auto overflow-hidden">
-  <video autoplay muted loop poster="/media/{{first_product.image.thumnail}}" class="object-cover w-full h-full">
-    <source src="/media/{{first_product.image.file800}}" />
+  <video autoplay muted loop poster="{{first_product.image.thumnail.url}}" class="object-cover w-full h-full">
+    <source src="{{first_product.image.file800.url}}" />
   </video>
   <div class="absolute top-0 left-0 flex flex-col items-start justify-start w-full h-full py-24" style="background-image: linear-gradient(to right, rgba(29, 31, 35, 1) 10%,  rgba(29, 31, 35, 0.9) 50%, rgba(29, 31, 35, 0.6)  100%)">
     <div class="flex flex-col items-start justify-end w-full h-full px-3 mx-auto mb-24 contianer lg:px-6 md:px-3" style="max-width:1200px;">
@@ -16,13 +16,13 @@
       <p class="mt-6 text-xl text-slate500 font-extralight">
         Experience the spirit of Korean artists on K-NFT Canvas.
       </p>
-      <a href="/collection" class="mt-24 link_btn">
+      <a href="/product" class="mt-24 link_btn">
         K-NFT Art Gallery
       </a>
     </div>
   </div>
 </section>
-{% elif first_product.image.content_type == "image/jpeg" or first_product.image.content_type == "image/gif" %}
+{% else%}
 <section class="flex flex-col items-start justify-end w-full min-h-screen py-24" style="background-image: linear-gradient(to right, rgba(29, 31, 35, 1) 10%,  rgba(29, 31, 35, 0.9) 50%, rgba(29, 31, 35, 0.6)  100%), url(/media/{{first_product.image.file800}}); background-repeat: no-repeat;background-position: center;background-size: cover;">
   <div class="flex flex-col items-start justify-end w-full h-full px-3 mx-auto mb-24 contianer lg:px-6 md:px-3" style="max-width:1200px;">
     <h2 class="text-6xl font-bold text-white ">
@@ -31,7 +31,7 @@
     <p class="mt-6 text-xl text-slate500 font-extralight">
       Experience the spirit of Korean artists on K-NFT Canvas.
     </p>
-    <a href="/collection" class="mt-24 link_btn">
+    <a href="/product" class="mt-24 link_btn">
       K-NFT Art Gallery
     </a>
   </div>
@@ -50,12 +50,12 @@
     <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
       <div id="fontCard" class="flex flex-col items-start w-full h-full">
         <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
-          {% if product.image.content_type == "video/mp4" %}
-          <video autoplay muted loop poster="/media/{{product.image.thumnail}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
-            <source src="/media/{{product.image.file360}}" />
+          {% if product.image.content_type == "mp4" %}
+          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+            <source src="{{product.image.file360.url}}" />
           </video>
-          {% elif product.image.content_type == "image/jpeg" or product.image.content_type == "image/gif" %}
-          <img src="/media/{{product.image.file360}}" style="height: 300px;width: 300px;" class="cursor-pointer " />
+          {% else %}
+          <img src="{{product.image.file360.url}}" style="height: 300px;width: 300px;" class="cursor-pointer " />
           {% endif %}
         </div>
         <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
@@ -66,7 +66,7 @@
               <p class="text-xl font-bold">{{product.price}} ETH</p>
             </div>
             <div class="flex flex-col items-center cursor-pointer">
-              <img src="/media/{{product.author.avator.thumnail}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
+              <img src="{{product.author.avator.thumnail.url}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
               <p>{{product.author}}</p>
             </div>
           </div>
@@ -84,7 +84,7 @@
     </div>
     {% endfor %}
   </div>
-  <a href="/collection" class="mt-24 link_btn">
+  <a href="/product" class="mt-24 link_btn">
     More notable NFTs
   </a>
 </section>

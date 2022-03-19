@@ -21,6 +21,22 @@ class Tag(AbstractItem):
         verbose_name_plural = "Tags"
 
 
+class ProjectType(AbstractItem):
+
+    """RoomType Model Definition"""
+
+    class Meta:
+        verbose_name = "projectType"
+
+
+class Type(AbstractItem):
+
+    """RoomType Model Definition"""
+
+    class Meta:
+        verbose_name = "Type"
+
+
 # Create your models here.
 class Product(core_models.TimeStampedModel):
     class Meta:
@@ -58,13 +74,8 @@ class Product(core_models.TimeStampedModel):
         "authors.Author", on_delete=models.CASCADE, related_name="author"
     )
     creationDate = models.DateField(null=True, blank=True)
-    type = models.CharField(
-        choices=TYPE_CHOICES,
-        max_length=40,
-        default="Caligraphy",
-        null=True,
-        blank=True,
-        verbose_name="type",
+    type = models.ForeignKey(
+        "Type", related_name="products", on_delete=models.SET_NULL, null=True
     )
     dimensionsx = models.CharField(
         max_length=10, null=True, blank=True, verbose_name="x 사이즈", unique=False
@@ -72,21 +83,16 @@ class Product(core_models.TimeStampedModel):
     dimensionsy = models.CharField(
         max_length=10, null=True, blank=True, verbose_name="y 사이즈", unique=False
     )
-    projectType = models.CharField(
-        choices=PROJECT_TYPE_CHOICES,
-        max_length=40,
-        default="the Love",
-        null=True,
-        blank=True,
-        verbose_name="project type",
-    )
-    productType = models.CharField(
+    product_type = models.CharField(
         choices=PRODUCT_TYPE_CHOICES,
         max_length=40,
         default="project",
         null=True,
         blank=True,
-        verbose_name="product type",
+        verbose_name="product_type",
+    )
+    project_type = models.ForeignKey(
+        "ProjectType", related_name="products", on_delete=models.SET_NULL, null=True
     )
     #
     projectTitle = models.CharField(

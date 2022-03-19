@@ -4,13 +4,7 @@ from . import models
 # Register your models here.
 @admin.register(models.Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = (
-        "type",
-        "helpType",
-        "email",
-        "name",
-        "message",
-    )
+    list_display = ("type", "helpType", "email", "name", "created")
     fieldsets = (
         (
             "기본정보",

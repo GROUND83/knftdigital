@@ -3,6 +3,18 @@
 {% block page_name %} contact {% endblock page_name %}
 
 {%block content %}
+<style>
+  #contactform input,
+  #contactform select,
+  #contactform textarea {
+    width: 100%;
+    padding: 10px;
+  }
+
+  #contactform label {
+    color: white
+  }
+</style>
 <div class="flex flex-col items-center w-full">
   <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="
       background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg"%}') no-repeat center center;height:300px;">
@@ -22,25 +34,38 @@
         </p>
       </div>
       <div class="flex flex-col items-start justify-center flex-1 w-full h-full p-24 ">
-        <form class="flex flex-col items-start flex-1 w-full ">
-          <input type="text" class="w-full px-3 py-2 mt-3 outline-none" placeholder="Enter your full name" />
-          <input type="text" class="w-full px-3 py-2 mt-3 outline-none" placeholder="Enter your email" />
-          <label class="mt-2 text-white">I need help with</label>
-          <select class="w-full px-3 py-2 mt-3 ">
-            <option>Buying NFTs</option>
-            <option>Question about NFT art</option>
-            <option>Participating in an NFT project</option>
-            <option>Question about K-NFT</option>
-            <option>Partnering with K-NFT</option>
-            <option>Other</option>
-          </select>
-          <textarea cols="50" rows="10" type="text" class="w-full px-3 py-2 mt-3 outline-none" placeholder="Type your message" style="height: 200px;">
-            </textarea>
 
-          <button class="w-full py-3 mt-3 bg-primary">
+        <form role="form" action="" method="post" id="contactform">
+          {% csrf_token %}
+          <div class="flex flex-col items-start">
+            <label>name</label>
+            {{form.name}}
+          </div>
+
+          <div class="flex flex-col items-start mt-3">
+            <label>Email</label>
+            {{form.email}}
+          </div>
+
+          <div class="hidden">
+            <label>type</label>
+            {{form.type}}
+          </div>
+          <div class="flex flex-col items-start  mt-3">
+            <label class="">I need help with</label>
+            {{form.helpType}}
+          </div>
+
+          <div class="flex flex-col items-start mt-3">
+            <label>message</label>
+            {{form.message}}
+          </div>
+
+          <button class="w-full py-3 mt-3 bg-primary" type="submit">
             Send Message
           </button>
         </form>
+
       </div>
     </div>
   </section>

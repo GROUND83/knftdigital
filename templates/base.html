@@ -12,14 +12,24 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'css/splide.min.css' %}">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="{% static 'js/splide.min.js' %}"></script>
   <title>{% block page_name %} {% endblock page_name %} | KNFT</title>
+  <style>
+    body {
+      font-family: "Mulish" !important;
+    }
+  </style>
 </head>
 
 <body class="relative bg-back">
-  {% include "partials/header.html" %}
-  {% block content %}
-  {% endblock %}
+  <header class="absolute top-0 z-30 w-full bg-transparent" style="height:80px; ">
+    {% include "partials/header.html" %}
+  </header>
+  <div class="">
+    {% block content %}
+    {% endblock %}
+  </div>
   {% include "partials/footer.html" %}
 </body>
 

@@ -23,6 +23,8 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("author/", include("authors.urls", namespace="authors")),
     path("product/", include("products.urls", namespace="products")),
+    path("contact/", include("contacts.urls", namespace="contacts")),
     path("admin/", admin.site.urls),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

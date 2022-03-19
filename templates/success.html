@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_name %} contact {% endblock page_name %}
+
+{%block content %}
+
+
+<div class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg"%}') no-repeat center center;height:300px;">
+    <div class="flex flex-col items-center justify-center h-full ">
+      <h2 class="text-6xl font-bold text-white ">CONTACT</h2>
+      <p class="mt-6 text-xl text-slate500 font-extralight">
+        Feel Free to Get in Touch With Us!
+      </p>
+    </div>
+  </div>
+  <section class="flex flex-col items-center justify-center py-24 " style="max-width:1200px;min-height:800px">
+    <h1 class="text-white text-3xl">Thank you for your inquiry</h1>
+    <p class="text-primary mt-3">Your contact information and message was successfully submitted.</p>
+  </section>
+</div>
+{% endblock content %}

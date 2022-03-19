@@ -12,7 +12,6 @@ class Contact(core_models.TimeStampedModel):
         ("contact", "contact"),
     )
     HELP_TYPE_CHOICES = (
-        ("-", "-"),
         ("Buying NFTs", "Buying NFTs"),
         ("Question about NFT art", "Question about NFT art"),
         ("Participating in an NFT project", "Participating in an NFT project"),
@@ -46,3 +45,6 @@ class Contact(core_models.TimeStampedModel):
     message = models.TextField(
         max_length=200, null=True, blank=True, verbose_name="message", unique=False
     )
+
+    def __str__(self):
+        return self.email

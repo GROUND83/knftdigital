@@ -17,6 +17,32 @@ class ItemAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(models.Type)
+class ItemAdmin(admin.ModelAdmin):
+
+    """Item Admin Definition"""
+
+    list_display = ("name",)
+
+    # def used_by(self, obj):
+    #     return obj.rooms.count()
+
+    pass
+
+
+@admin.register(models.ProjectType)
+class ItemAdmin(admin.ModelAdmin):
+
+    """Item Admin Definition"""
+
+    list_display = ("name",)
+
+    # def used_by(self, obj):
+    #     return obj.rooms.count()
+
+    pass
+
+
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -43,8 +69,8 @@ class ProductAdmin(admin.ModelAdmin):
             "추가정보",
             {
                 "fields": (
-                    "projectType",
-                    "productType",
+                    "project_type",
+                    "product_type",
                     "projectTitle",
                     "edtionTitle",
                     "otherTitle",

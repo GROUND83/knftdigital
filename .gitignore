@@ -158,3 +158,8 @@ cython_debug/
 .env
 
 .ca-certificate.crt
+
+
+media/
+static/
+staticfiles/

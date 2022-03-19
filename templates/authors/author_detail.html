@@ -1,15 +1,200 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block page_name %}
-Home
+{{author.name}}
 {% endblock page_name %}
 
 {% block content %}
-<div class="flex flex-col items-center w-full pt-24 text-white">
-  <h1>{{author.name}}</h1>
-  <img src="{{author.avator.file360.url}}" />
-  <h3>{{author.description|safe}}</h3>
+<style>
+  ul.tabs {
+
+    list-style: none;
+    width: 100%;
+    background-color: #000000;
+  }
+
+  ul.tabs li {
+    background: none;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+
+  ul.tabs li.current {
+    border: 1px solid #F5C226;
+    color: #F5C226;
+  }
+
+  .tab-content {
+    display: none;
+    /* background: #ededed; */
+    padding: 15px;
+  }
+
+  .tab-content.current {
+    display: inherit;
+  }
+</style>
+<div class="flex flex-col items-center w-full min-h-screen ">
+  <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg" %}') no-repeat center center; height:300px;">
+    <div class="flex flex-col items-center justify-center h-full">
+      <h2 class="text-6xl font-bold text-white ">{{author.name}}'s Collection</h2>
+      <p class="mt-6 text-xl text-slate500 font-extralight">
+        {{count}} works
+      </p>
+    </div>
+
+  </div>
+  <section style="max-width:1200px;" class="grid w-full grid-cols-3 gap-6 flex-1 mt-6">
+    <div class="col-spans-2 w-full">
+      <div class="flex flex-row items-center">
+        <img src="{{author.avator.thumnail.url}}" style="width: 80px;height: 80px;" class="border-2 rounded-full overflow-hidden" />
+        <div class="ml-6 ">
+          <p class="text-2xl text-white font-bold">{{author.name}}</p>
+          <p class="text-slate500">{{author.authDes}}</p>
+        </div>
+      </div>
+      <div class="mt-6 text-white">
+        <p class="font-bold text-2xl">{{author.desTitle}}</p>
+        <p class="mt-3 text-justify">{{author.description|safe}}</p>
+      </div>
+      <div class="mt-6 flex flex-row items-center ">
+        {% if author.instargram %}
+        <a href="https://www.instagram.com/{{author.instargram}}/" target="_blank" rel="noreferrer" style="width: 30px;height: 30px;" class="bg-primary hover:bg-opacity-50 rounded-full flex flex-col items-center justify-center mr-3">
+          <i class="text-xl bi bi-instagram "></i>
+        </a>
+        {% endif %}
+        {% if author.discord %}
+        <a href="https://discord.gg/{{author.discord}}/" target="_blank" rel="noreferrer" style="width: 30px;height: 30px;" class="bg-primary hover:bg-opacity-50 rounded-full flex flex-col items-center justify-center mr-3">
+          <i class="text-xl bi bi-discord"></i>
+        </a>
+        {% endif %}
+        {% if author.facebook %}
+        <a href="https://www.facebook.com/{{author.facebook}}/" target="_blank" rel="noreferrer" style="width: 30px;height: 30px;" class="bg-primary hover:bg-opacity-50 rounded-full flex flex-col items-center justify-center mr-3">
+          <i class="text-xl bi bi-facebook"></i>
+        </a>
+        {% endif %}
+        {% if author.twitter %}
+        <a href="https://twitter.com/{{author.twitter}}/" target="_blank" rel="noreferrer" style="width: 30px;height: 30px;" class="bg-primary hover:bg-opacity-50 rounded-full flex flex-col items-center justify-center mr-3">
+          <i class="text-xl bi bi-twitter"></i>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-span-2">
+      <ul class="tabs w-full px-3 py-1">
+        <li class="tab-link current" data-tab="tab-1">Project</li>
+        <li class="tab-link text-white" data-tab="tab-2">Editions</li>
+        <li class="tab-link text-white" data-tab="tab-3">Others</li>
+
+      </ul>
+      <div id="tab-1" class="tab-content current grid w-full grid-cols-4 gap-24">
+        {% for project in projects  %}
+        <a href="/product/{{project.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="width:200px;height: 320px;">
+          <div id="fontCard" class="flex flex-col items-start w-full h-full">
+            <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
+              {% if project.image.content_type == "mp4" %}
+              <video autoplay muted loop poster="{{project.image.thumnail.url}}" class="object-cover cursor-pointer " style="width:200px;height: 220px;">
+                <source src="{{project.image.file360.url}}" />
+              </video>
+              {% else %}
+              <img src="{{project.image.file360.url}}" style="width:200px;height: 220px;" class="cursor-pointer " />
+              {% endif %}
+            </div>
+            <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
+              <p class="text-xl font-bold line-clamp-1">{{project.title}}</p>
+              <div class="flex flex-row items-end justify-between w-full">
+                <div class="flex flex-col items-start">
+                  <p class="">Reserve Price</p>
+                  <p class="text-xl font-bold">{{project.price}} ETH</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </a>
+        {% endfor %}
+      </div>
+      <div id="tab-2" class="tab-content">
+        {% for edition in editions  %}
+        <a href="/product/{{edition.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="width:200px;height: 320px;">
+          <div id="fontCard" class="flex flex-col items-start w-full h-full">
+            <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
+              {% if edition.image.content_type == "mp4" %}
+              <video autoplay muted loop poster="{{edition.image.thumnail.url}}" class="object-cover cursor-pointer " style="width:200px;height: 220px;">
+                <source src="{{edition.image.file360.url}}" />
+              </video>
+              {% else %}
+              <img src="{{edition.image.file360.url}}" style="width:200px;height: 220px;" class="cursor-pointer " />
+              {% endif %}
+            </div>
+            <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
+              <p class="text-xl font-bold line-clamp-1">{{edition.title}}</p>
+              <div class="flex flex-row items-end justify-between w-full">
+                <div class="flex flex-col items-start">
+                  <p class="">Reserve Price</p>
+                  <p class="text-xl font-bold">{{edition.price}} ETH</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </a>
+        {% endfor %}
+      </div>
+      <div id="tab-3" class="tab-content">
+        {% for other in others  %}
+        <a href="/product/{{other.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="width:200px;height: 320px;">
+          <div id="fontCard" class="flex flex-col items-start w-full h-full">
+            <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
+              {% if other.image.content_type == "mp4" %}
+              <video autoplay muted loop poster="{{other.image.thumnail.url}}" class="object-cover cursor-pointer " style="width:200px;height: 220px;">
+                <source src="{{other.image.file360.url}}" />
+              </video>
+              {% else %}
+              <img src="{{other.image.file360.url}}" style="width:200px;height: 220px;" class="cursor-pointer " />
+              {% endif %}
+            </div>
+            <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
+              <p class="text-xl font-bold line-clamp-1">{{other.title}}</p>
+              <div class="flex flex-row items-end justify-between w-full">
+                <div class="flex flex-col items-start">
+                  <p class="">Reserve Price</p>
+                  <p class="text-xl font-bold">{{other.price}} ETH</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </a>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    $(document).ready(function() {
+
+      $('ul.tabs li').click(function() {
+        var tab_id = $(this).attr('data-tab');
+
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+
+        $(this).addClass('current');
+        $("#" + tab_id).addClass('current');
+      })
+
+    })
+  </script>
 </div>
 
 {% endblock %}
