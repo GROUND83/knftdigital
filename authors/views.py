@@ -38,7 +38,7 @@ class AuthorDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(AuthorDetail, self).get_context_data(**kwargs)
         author = self.get_object()
-        products = Product.objects.filter(author_name=author.name)
+        products = Product.objects.filter(author_id=author.id)
         print(products)
         count = products.count()
         print(count)
