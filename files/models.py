@@ -46,4 +46,4 @@ class File(core_models.TimeStampedModel):
     file800 = models.FileField(upload_to=get_detail_file_path, null=True, blank=True)
 
     def __str__(self):
-        return self.caption
+        return self.author
