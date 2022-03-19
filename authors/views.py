@@ -40,9 +40,9 @@ class AuthorDetail(DetailView):
         print(self.object.products.all())
         count = self.object.products.all().count()
         print(count)
-        product = self.object.products.filter(product_type_name="project")
-        edition = self.object.products.filter(product_type_name="edition")
-        others = self.object.products.filter(product_type_name="other")
+        product = self.object.products.filter(product_type="project")
+        edition = self.object.products.filter(product_type="edition")
+        others = self.object.products.filter(product_type="other")
         print(product)
         context["count"] = count
         context["projects"] = product
