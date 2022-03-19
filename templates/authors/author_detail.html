@@ -92,17 +92,17 @@
         <li class="tab-link text-white" data-tab="tab-3">Others</li>
 
       </ul>
-      <div id="tab-1" class="tab-content current grid w-full grid-cols-3 gap-24">
+      <div id="tab-1" class="tab-content current grid w-full grid-cols-3 gap-12">
         {% for project in projects  %}
         <a href="/product/{{project.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="height: 320px;">
           <div id="fontCard" class="flex flex-col items-start w-full h-full">
             <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
               {% if project.image.content_type == "mp4" %}
-              <video autoplay muted loop poster="{{project.image.thumnail.url}}" class="object-cover cursor-pointer " style="width:200px;height: 220px;">
+              <video autoplay muted loop poster="{{project.image.thumnail.url}}" class="object-cover cursor-pointer w-full " style="height: 220px;">
                 <source src="{{project.image.file360.url}}" />
               </video>
               {% else %}
-              <img src="{{project.image.file360.url}}" style="width:200px;height: 220px;" class="cursor-pointer " />
+              <img src="{{project.image.file360.url}}" style="height: 220px;" class="cursor-pointer w-full" />
               {% endif %}
             </div>
             <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
