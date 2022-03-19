@@ -45,8 +45,5 @@ class File(core_models.TimeStampedModel):
     file360 = models.FileField(upload_to=get_detail_file_path, null=True, blank=True)
     file800 = models.FileField(upload_to=get_detail_file_path, null=True, blank=True)
 
-    def filename(self):
-        return os.path.basename(self.file.name)
-
     def __str__(self):
         return self.caption

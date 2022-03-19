@@ -100,27 +100,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != "collectstatic":
     DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
     }
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "db",
-#         "USER": "db",
-#         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-#         "HOST": "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
-#         "PORT": "25060",
-#     }
-# }
 
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
-# print(DATABASES)
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

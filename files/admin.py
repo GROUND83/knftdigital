@@ -12,7 +12,6 @@ class FileAdmin(admin.ModelAdmin):
         "author",
         # "get_thumbnail",
         "content_type",
-        "caption",
         "file",
         "thumnail",
         "file360",
