@@ -40,12 +40,12 @@ class AuthorDetail(DetailView):
         print(self.object.products.all())
         count = self.object.products.all().count()
         print(count)
-        product = self.object.products.filter(product_type="project")
-        edition = self.object.products.filter(product_type="edition")
-        others = self.object.products.filter(product_type="other")
+        product = self.object.products.filter(product_type_name="project")
+        edition = self.object.products.filter(product_type_name="edition")
+        others = self.object.products.filter(product_type_name="other")
         print(product)
         context["count"] = count
-        context["projects"] = product  ## self 는 클래스이므로 object 로 접근해야 함.
+        context["projects"] = product
         context["editions"] = edition
         context["others"] = others
         return context
