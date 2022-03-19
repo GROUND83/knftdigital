@@ -36,7 +36,7 @@ class AuthorDetail(DetailView):
     template_name = "authors/author_detail.html"
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(AuthorDetail, self).get_context_data(**kwargs)
         print(self.object.products.all())
         count = self.object.products.all().count()
         print(count)
