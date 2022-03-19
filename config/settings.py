@@ -31,11 +31,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
 DEBUG = os.getenv("DEBUG", "False") == "True"
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-ALLOWED_HOSTS = os.getenv(
-    "DJANGO_ALLOWED_HOSTS",
-    "127.0.0.1",
-    "147.182.244.81",
-).split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 #   "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
 # ALLOWED_HOSTS += [os.environ.get("DJANGO_ALLOWED_HOST")]
