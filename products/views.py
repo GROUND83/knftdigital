@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, FormView, View
 class ProductView(ListView):
     template_name = "products/product_list.html"
     model = models.Product
-    paginate_by = 10
+    paginate_by = 9
     paginate_orphans = 5
     # ordering = "created"
     context_object_name = "products"
@@ -22,7 +22,7 @@ class ProductView(ListView):
         price = int(self.request.GET.get("price", 0))
         filter_args = {}
         if title != "":
-            filter_args["title__startswith"] = title
+            filter_args["title__icontains"] = title
         if project_type != 0:
             filter_args["project_type__pk"] = project_type
         if type != 0:
