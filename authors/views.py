@@ -23,7 +23,7 @@ class AuthorView(ListView):
         if self.request.GET.get("q"):
             name = self.request.GET.get("q")
             # print(name)
-            filter_set = filter_set.filter(name=name)
+            filter_set = models.Author.objects.filter(name=name)
 
         print(context)
         context["authors"] = filter_set
@@ -39,13 +39,13 @@ class AuthorDetail(DetailView):
         context = super(AuthorDetail, self).get_context_data(**kwargs)
         author = self.get_object()
         products = Product.objects.filter(author_id=author.id)
-        print(products)
+        # print(products)
         count = products.count()
-        print(count)
+        # print(count)
         product = products.filter(product_type="project")
         edition = products.filter(product_type="edition")
         others = products.filter(product_type="other")
-        print(product)
+        # print(product)
         context["count"] = count
         context["projects"] = product
         context["editions"] = edition
