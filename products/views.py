@@ -100,7 +100,7 @@ class ProductDetail(DetailView):
         context = super(ProductDetail, self).get_context_data(**kwargs)
         context["otherProducts"] = models.Product.objects.exclude(
             author=self.get_object().author
-        )
+        )[:4]
         # print(context)
         return context
 
