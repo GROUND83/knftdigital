@@ -13,13 +13,40 @@ class ProductView(ListView):
     # ordering = "created"
     context_object_name = "products"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        title = self.request.GET.get("title", "")
+        project_type = int(self.request.GET.get("project_type", 0))
+        type = int(self.request.GET.get("type", 0))
+        createdAt = int(self.request.GET.get("createdAt", 0))
+        price = int(self.request.GET.get("price", 0))
+        filter_args = {}
+        if title != "":
+            filter_args["title__startswith"] = title
+        if project_type != 0:
+            filter_args["project_type__pk"] = project_type
+        if type != 0:
+            filter_args["type__pk"] = type
+        if createdAt is True:
+            # filter_args["type__pk"] = type
+            queryset = queryset.filter(**filter_args).order_by("-creationDate")
+        else:
+            queryset = queryset.filter(**filter_args).order_by("creationDate")
+        if price is True:
+            # filter_args["type__pk"] = type
+            queryset = queryset.filter(**filter_args).order_by("-price")
+        else:
+            queryset = queryset.filter(**filter_args).order_by("price")
+
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         projectTypes = models.ProjectType.objects.all()
         types = models.Type.objects.all()
 
-        products = models.Product.objects.all()
+        # products = models.Product.objects.all()
         # print(filter_set)
         title = self.request.GET.get("title", "")
         project_type = int(self.request.GET.get("project_type", 0))
@@ -34,30 +61,30 @@ class ProductView(ListView):
             "price": price,
         }
 
-        filter_args = {}
-        if title != "":
-            filter_args["title__startswith"] = title
-        if project_type != 0:
-            filter_args["project_type__pk"] = project_type
-        if type != 0:
-            filter_args["type__pk"] = type
-        products = []
-        if createdAt is True:
-            # filter_args["type__pk"] = type
-            products = models.Product.objects.filter(**filter_args).order_by(
-                "-creationDate"
-            )
-        else:
-            products = models.Product.objects.filter(**filter_args).order_by(
-                "creationDate"
-            )
-        if price is True:
-            # filter_args["type__pk"] = type
-            products = models.Product.objects.filter(**filter_args).order_by("-price")
-        else:
-            products = models.Product.objects.filter(**filter_args).order_by("price")
+        # filter_args = {}
+        # if title != "":
+        #     filter_args["title__startswith"] = title
+        # if project_type != 0:
+        #     filter_args["project_type__pk"] = project_type
+        # if type != 0:
+        #     filter_args["type__pk"] = type
+        # products = []
+        # if createdAt is True:
+        #     # filter_args["type__pk"] = type
+        #     products = models.Product.objects.filter(**filter_args).order_by(
+        #         "-creationDate"
+        #     )
+        # else:
+        #     products = models.Product.objects.filter(**filter_args).order_by(
+        #         "creationDate"
+        #     )
+        # if price is True:
+        #     # filter_args["type__pk"] = type
+        #     products = models.Product.objects.filter(**filter_args).order_by("-price")
+        # else:
+        #     products = models.Product.objects.filter(**filter_args).order_by("price")
 
-        context["products"] = products
+        # context["products"] = products
         context["project_types"] = projectTypes
         context["types"] = types
         context["form"] = form
