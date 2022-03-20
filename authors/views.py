@@ -23,7 +23,7 @@ class AuthorView(ListView):
         if self.request.GET.get("q"):
             name = self.request.GET.get("q")
             # print(name)
-            filter_set = models.Author.objects.filter(name=name)
+            filter_set = models.Author.objects.filter(name__icontains=name)
 
         print(context)
         context["authors"] = filter_set
