@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, FormView, View
 
 # Create your views here.
 class ProductView(ListView):
+    template_name = "products/product_list.html"
     model = models.Product
     paginate_by = 10
     paginate_orphans = 5

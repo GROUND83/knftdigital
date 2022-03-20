@@ -19,11 +19,11 @@ class AuthorView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         filter_set = models.Author.objects.all()
-        print(filter_set)
+        # print(filter_set)
         if self.request.GET.get("q"):
             name = self.request.GET.get("q")
-            print(name)
-            filter_set = filter_set.filter(name__contains=name)
+            # print(name)
+            filter_set = filter_set.filter(name=name)
 
         print(context)
         context["authors"] = filter_set
