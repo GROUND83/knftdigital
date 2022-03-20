@@ -17,7 +17,7 @@ class AuthorView(ListView):
     # context_object_name = "authors"
     def get_queryset(self):
         queryset = super().get_queryset()
-        name = self.request.GET.get("q")
+        name = self.request.GET.get("q", "")
 
         filter_args = {}
         if name != "":
