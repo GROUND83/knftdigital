@@ -22,3 +22,8 @@ def get_product(request):
 def about(request):
 
     return render(request, "about.html")
+
+
+def license(request):
+
+    return render(request, "license.html")

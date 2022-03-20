@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %} about {% endblock page_name %}
+
+{%block content %}
+<div class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center justify-center w-full pt-24 pb-12" style="
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg"%}') no-repeat center center;height:300px;">
+    <div class="flex flex-col items-center justify-center h-full ">
+      <h2 class="text-6xl font-bold text-white ">NFT licensing</h2>
+
+    </div>
+  </div>
+  <section class="flex flex-col items-center justify-center py-24 " style="max-width:1200px;">
+
+    <p class="mt-12 text-lg leading-9 text-justify text-slate500">
+      The NFT Seller is referred to as the “Grantor.” The NFT Buyer is referred to as the “Grantee.” The works are associated with digital works (digital image, video, audio, or other digital assets). NFT purchase is buying the Non-fungible token and is licensing the underlying digital art, music, or other assets under the terms set forth below, or other terms set forth on the listing page.
+      Grant of Rights, Limitations, and Warranties:
+    </p>
+
+    <ol class="list-decimal px-6 leading-9 text-justify text-slate500 mt-3">
+      <li>
+        The Copyright Owner of the Works remains the copyright owner. The Grantee is not receiving ownership of the Works but is receiving certain limited rights in the Works as set forth herein.
+      </li>
+      <li>
+        Upon confirming the NFT on the blockchain, Buyer becomes the Grantee and immediately receives a worldwide, non-exclusive, transferable license to the Works as set forth herein, for the period the Grantee owns the NFT.
+      </li>
+      <li>
+        Grantee is granted the right to use, copy and display the Works.
+      </li>
+      <li>
+        Grantee may not modify the works, create derivative works, transform the works or perform the Works.
+      </li>
+      <li>
+        Grantee MAY NOT make commercial use of the Works, except to resell or transfer some or all the rights granted herein.
+      </li>
+      <li>
+        Grantee MAY NOT use the Works in any way which associates the Works with hatred, intolerance, violence, cruelty, or otherwise infringes upon the rights of others.
+      </li>
+      <li>
+        Any exercise of right granted hereunder requires attribution to the Copyright Owner and the Creator if they are listed in the NFT sale, where reasonably possible.
+      </li>
+      <li>
+        Grantee shall not challenge Licensor’s copyright ownership of the Works.
+      </li>
+      <li>
+        The NFT Seller warrants they are authorized to license the Works and consistent with these terms.
+      </li>
+      <li>
+        Grantee may contact the Grantor if Grantee wishes to obtain rights not otherwise included herein. Any further grant of rights shall be in writing and evidenced by a further NFT, or signed documents, agreed to by all parties.
+      </li>
+      <li>
+        This License only addresses the rights to the Works attached to the NFT transaction, not the NFT itself. There may be additional terms on the NFT listing page. To the extent there is a direct conflict, the NFT sale/listing page shall control.
+      </li>
+      <li>
+        To determine which version of this license applies to your transaction, compare the timestamp of the NFT to the version date and time of this page.
+      </li>
+    </ol>
+  </section>
+
+
+
+</div>
+
+
+
+
+{% endblock content %}

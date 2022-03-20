@@ -6,4 +6,5 @@ app_name = "cores"
 urlpatterns = [
     path("", get_product_views.get_product, name="home"),
     path("about/", get_product_views.about, name="about"),
+    path("license/", get_product_views.license, name="license"),
 ]

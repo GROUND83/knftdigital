@@ -11,20 +11,17 @@
         {{authors.count}} authors
       </p>
     </div>
-    <div class="flex flex-col items-center justify-center h-full w-full py-3 bg-slate700  rounded-lg px-3 -mb-12" style="max-width:1200px;height:100px;">
-      <form method='GET' class="grid grid-cols-3 gap-3 w-full ">
-
-        <input type='text' name='q' value='{{ request.GET.q }}' class="w-full rounded-md px-3  col-span-2 " style="height: 40px;" placeholder="Search by name">
-
+    <div class="flex flex-col items-center justify-center  w-full py-3 bg-slate700  rounded-lg px-3 -mb-12 " style="max-width:1200px;height:100px;">
+      <form method='GET' class="grid grid-cols-3 gap-3 w-full">
+        <input type='text' name='q' value='{{ request.GET.q }}' class="rounded-md px-3  col-span-2 " style="height: 40px;" placeholder="Search by name">
         <button class="col-span-1 px-3 py-2 bg-slate500 w-full rounded-md cursor-pointer" style="height: 40px;"><i class="bi bi-search"></i></button>
-
       </form>
     </div>
-  </div>
-  <section style="max-width:1200px;">
+  </div>a
+  <section style="max-width:1200px;" class="mt-24">
 
     {% if authors.count > 0 %}
-    <div class="grid w-full grid-cols-5 gap-24 mt-24">
+    <div class="grid w-full grid-cols-5 gap-24 ">
       {% for author in authors %}
       <a href="/author/{{author.id}}" class="bg-white rounded-md overflow-hidden col-span-1 ">
         <img src="{{author.avator.file360.url}}" class="object-cover" style="height:160px;" />
