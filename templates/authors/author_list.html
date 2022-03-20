@@ -26,11 +26,11 @@
     {% if authors.count > 0 %}
     <div class="grid w-full grid-cols-5 gap-24 mt-24">
       {% for author in authors %}
-      <a href="/author/{{author.id}}" class="bg-white rounded-md overflow-hidden">
-        <img src="{{author.avator.file360.url}}" />
+      <a href="/author/{{author.id}}" class="bg-white rounded-md overflow-hidden col-span-1 ">
+        <img src="{{author.avator.file360.url}}" class="object-cover" style="height:160px;" />
         <div class="p-3 bg-gray-200 w-full">
-          <h2 class="text-2xl font-bold">{{author.name}}</h2>
-          <p>{{author.authDes}}</p>
+          <h2 class="text-xl font-bold">{{author.name}}</h2>
+          <p class="text-slate500">{{author.authDes}}</p>
         </div>
       </a>
       {% endfor %}
