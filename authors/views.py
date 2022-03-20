@@ -14,14 +14,14 @@ class AuthorView(ListView):
     paginate_by = 10
     paginate_orphans = 5
     ordering = "created"
-    # context_object_name = "authors"
+    context_object_name = "authors"
+
     def get_queryset(self):
         queryset = super().get_queryset()
         name = self.request.GET.get("q", "")
 
-        filter_args = {}
         if name != "":
-            filter_args["name__icontains"] = name
+
             queryset = queryset.filter(name__icontains=name)
 
         return queryset
