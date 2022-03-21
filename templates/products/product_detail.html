@@ -245,11 +245,11 @@
           {% for otherProduct in otherProducts %}
           <li class="splide__slide">
             {% if otherProduct.image.content_type == "mp4" %}
-            <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full h-auto">
+            <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full h-full">
               <source src="{{otherProduct.image.file360.url}}" />
             </video>
             {% else %}
-            <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-auto" />
+            <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-full object-cover" />
             {% endif %}
           </li>
           {% endfor %}
@@ -258,50 +258,50 @@
     </div>
 
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      new Splide('#image-slider', {
-        perPage: 3,
-        rewind: true,
-        fixedWidth: 280,
-        fixedHeight: 280,
-        // gap: 10,
-        // rewind: true,
-        // pagination: false,
-        // cover: true,
-        // isNavigation: true,
-      }).mount();
-    });
-    const shareButton = document.querySelector('.share-button');
-    const shareDialog = document.querySelector('.share-dialog');
-
-    const openseaBtn = document.querySelector('.openseaBtn');
-    const openseaBtnDialog = document.querySelector('.openseaBtn-dialog');
-
-    openseaBtn.addEventListener('click', event => {
-      openseaBtnDialog.classList.add('is-open');
-    });
-    shareButton.addEventListener('click', event => {
-      shareDialog.classList.add('is-open');
-    });
-
-
-    $('html').click(function(e) {
-      if ($(e.target).parents('.base').length < 1) {
-
-        shareDialog.classList.remove('is-open');
-      }
-
-    })
-    $('html').click(function(e) {
-
-      if ($(e.target).parents('.outside').length < 1) {
-
-        openseaBtnDialog.classList.remove('is-open');
-      }
-    })
-  </script>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Splide('#image-slider', {
+      perPage: 3,
+      rewind: true,
+      fixedWidth: 280,
+      fixedHeight: 280,
+      // gap: 10,
+      // rewind: true,
+      // pagination: false,
+      // cover: true,
+      // isNavigation: true,
+    }).mount();
+  });
+  const shareButton = document.querySelector('.share-button');
+  const shareDialog = document.querySelector('.share-dialog');
+
+  const openseaBtn = document.querySelector('.openseaBtn');
+  const openseaBtnDialog = document.querySelector('.openseaBtn-dialog');
+
+  openseaBtn.addEventListener('click', event => {
+    openseaBtnDialog.classList.add('is-open');
+  });
+  shareButton.addEventListener('click', event => {
+    shareDialog.classList.add('is-open');
+  });
+
+
+  $('html').click(function(e) {
+    if ($(e.target).parents('.base').length < 1) {
+
+      shareDialog.classList.remove('is-open');
+    }
+
+  })
+  $('html').click(function(e) {
+
+    if ($(e.target).parents('.outside').length < 1) {
+
+      openseaBtnDialog.classList.remove('is-open');
+    }
+  })
+</script>
 
 
 {% endblock %}
