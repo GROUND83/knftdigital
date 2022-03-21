@@ -14,7 +14,31 @@
   <link rel="stylesheet" href="{% static 'css/splide.min.css' %}">
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="{% static 'js/splide.min.js' %}"></script>
+
+  {% if request.resolver_match.url_name == "detail" %}
+  <title>{{product.title}} | KNFT</title>
+  <meta property="og:title" content="{{product.title}}">
+  <meta name="description" property="og:description" content="{{product.description|striptags|truncatewords:20}}">
+  <meta property="og:image" content="{{product.image.file360.url}}">
+  <meta property="og:image:alt" content="{{product.title}}">
+  <meta property="og:url" content="https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content=https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}">
+  <meta name="twitter:creator" content="@TodayKrishna">
+  <meta name="twitter:title" content="{{product.title}}">
+  <meta name="twitter:description" content="{{product.description|striptags|truncatewords:20}}">
+  <meta name="twitter:image" content="{{product.image.file360.url}}">
+  {% elif request.resolver_match.url_name != "detail" %}
   <title>{% block page_name %} {% endblock page_name %} | KNFT</title>
+  <meta name="description" content="This is the description for the homepage.">
+
+  {% else %}
+  <title>Another Title</title>
+  <meta name="description" content="This is the description ...">
+  {% endif %}
+
+
   <style>
     body {
       font-family: "Mulish" !important;
