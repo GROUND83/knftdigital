@@ -131,7 +131,7 @@
                       <span class="ml-3">Share on Facebook</span>
                     </button>
 
-                    <button class="twitter_share  flex flex-row items-center w-full hover:bg-gray-200 py-3 px-2 cursor-pointer">
+                    <button class="twitter_share  flex flex-row items-center w-full hover:bg-gray-200 py-3 px-2 cursor-pointer" data-url="https://knftdigital-4joj4.ondigitalocean.app/product/2" data-title="{{product.title}}">
                       <i class="text-2xl bi bi-twitter " style="color: #1da1f2;"></i>
                       <span class="ml-3"> Share onTwitter</span>
                     </button>
@@ -293,6 +293,15 @@
     var text = facebook_share.getAttribute('data-title')
     window.open(
       'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url)
+    );
+  });
+  twitter_share = document.querySelector('.twitter_share');
+  twitter_share.addEventListener('click', event => {
+    var url = twitter_share.getAttribute('data-url')
+    console.log(event)
+    var text = twitter_share.getAttribute('data-title')
+    window.open(
+      'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url)
     );
   });
   $('html').click(function(e) {
