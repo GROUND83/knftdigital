@@ -291,7 +291,7 @@
     var url = facebook_share.getAttribute('data-url')
     console.log(event)
     var text = facebook_share.getAttribute('data-title')
-    window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url);
+    window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(url));
     // window.open('http://twitter.com/intent?url=' + encodeURIComponent(this.value) + '&text=' + text, '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
   });
   $('html').click(function(e) {
