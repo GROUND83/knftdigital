@@ -15,21 +15,23 @@
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="{% static 'js/splide.min.js' %}"></script>
   <title>{% block page_name %} {% endblock page_name %} | KNFT</title>
-  <meta name="description" content="This is the description for the homepage.">
-
-  <meta property="og:title" content=" KNFT" />
-  <meta property="og:site_name" content="knft" />
-  <meta property="og:description" content="API used for listing all the region, province, city, municipality, barangay, and its data. Philippine Standard Geographic Codes (PSGC) data came from Philippine Statistics Authority." />
-  <meta property="og:url" content="https://knftdigital-4joj4.ondigitalocean.app" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="{{product.image.file360.url}}" />
-  <meta property="og:image:alt" content="{{product.title}}" />
 
   {% if request.resolver_match.url_name == "detail" %}
   <title>{{product.title}} | KNFT</title>
 
+  <meta name="description" content="This is the description for the homepage.">
+
+  <meta property="og:title" content=" KNFT" />
+  <meta property="og:site_name" content="knft" />
+  <meta property="og:description" content="{{product.description|striptags|truncatewords:20}}" />
+  <meta property="og:url" content="https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{product.image.file360.url}}" />
+  <meta property="og:image:alt" content="{{product.title}}" />
+
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content=https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}">
+  <meta name="twitter:site" content="https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}">
   <meta name="twitter:title" content="{{product.title}}">
   <meta name="twitter:image" content="{{product.image.file360.url}}">
   <meta name="twitter:image:alt" content="{{product.title}}">
@@ -37,6 +39,13 @@
 
 
   {% else %}
+  <meta name="description" content="This is the description for the homepage.">
+
+  <meta property="og:title" content=" KNFT" />
+  <meta property="og:site_name" content="knft" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="https://knftdigital-4joj4.ondigitalocean.app" />
+  <meta property="og:type" content="website" />
 
   {% endif %}
 
