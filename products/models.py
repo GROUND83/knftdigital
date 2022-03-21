@@ -118,20 +118,20 @@ class Product(core_models.TimeStampedModel):
     )
     # 소셜
     foundataionLink = models.CharField(
-        max_length=50,
+        max_length=500,
         null=True,
         blank=True,
         verbose_name="foundataionLink",
         unique=False,
     )
     openseaLink = models.CharField(
-        max_length=50, null=True, blank=True, verbose_name="openseaLink", unique=False
+        max_length=500, null=True, blank=True, verbose_name="openseaLink", unique=False
     )
     solahartLink = models.CharField(
-        max_length=50, null=True, blank=True, verbose_name="solahartLink", unique=False
+        max_length=500, null=True, blank=True, verbose_name="solahartLink", unique=False
     )
     raribleLink = models.CharField(
-        max_length=50, null=True, blank=True, verbose_name="raribleLink", unique=False
+        max_length=500, null=True, blank=True, verbose_name="raribleLink", unique=False
     )
     # 이미지
     image = models.ForeignKey(
