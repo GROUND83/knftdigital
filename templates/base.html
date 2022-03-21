@@ -17,7 +17,7 @@
   <title>{% block page_name %} {% endblock page_name %} | KNFT</title>
   <meta name="description" content="This is the description for the homepage.">
 
-  <meta property="og:title" content="{% block page_name %} {% endblock page_name %} | KNFT" />
+  <meta property="og:title" content=" KNFT" />
   <meta property="og:site_name" content="knft" />
   <meta property="og:description" content="API used for listing all the region, province, city, municipality, barangay, and its data. Philippine Standard Geographic Codes (PSGC) data came from Philippine Statistics Authority." />
   <meta property="og:url" content="https://knftdigital-4joj4.ondigitalocean.app" />
@@ -27,11 +27,6 @@
 
   {% if request.resolver_match.url_name == "detail" %}
   <title>{{product.title}} | KNFT</title>
-  <meta property="og:title" content="{{product.title}}">
-  <meta name="description" property="og:description" content="{{product.description|striptags|truncatewords:20}}">
-  <meta property="og:image" content="{{product.image.file360.url}}">
-  <meta property="og:image:alt" content="{{product.title}}">
-  <meta property="og:url" content="https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content=https://knftdigital-4joj4.ondigitalocean.app/product/{{product.pk}}">
