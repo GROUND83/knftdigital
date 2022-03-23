@@ -92,29 +92,11 @@ TEMPLATES = [
 
 RESPONSIVE_MEDIA_QUERIES = {
     "small": {
-        "verbose_name": _("Small screens"),
         "min_width": None,
         "max_width": 640,
     },
     "medium": {
-        "verbose_name": _("Medium screens"),
         "min_width": 641,
-        "max_width": 1024,
-    },
-    "large": {
-        "verbose_name": _("Large screens"),
-        "min_width": 1025,
-        "max_width": 1440,
-    },
-    "xlarge": {
-        "verbose_name": _("XLarge screens"),
-        "min_width": 1441,
-        "max_width": 1920,
-    },
-    "xxlarge": {
-        "verbose_name": _("XXLarge screens"),
-        "min_width": 1921,
-        "max_width": None,
     },
 }
 WSGI_APPLICATION = "config.wsgi.application"
