@@ -9,7 +9,7 @@ from django.views.generic import ListView, DetailView
 
 # Create your views here.
 class AuthorView(ListView):
-    template_name = "authors/author_list.html"
+    template_name = "/about.html"
     model = models.Author
     paginate_by = 10
     paginate_orphans = 5
