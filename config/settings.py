@@ -57,7 +57,6 @@ PROJECT_APPS = [
 ]
 THIRDPARTY_APPS = [
     "storages",
-    "responsive",
 ]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRDPARTY_APPS
 MIDDLEWARE = [
@@ -68,7 +67,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "responsive.middleware.ResponsiveMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -84,7 +82,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "responsive.context_processors.device",
             ],
         },
     },
