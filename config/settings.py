@@ -30,8 +30,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
-DEBUG = True
-DEVELOPMENT_MODE = True
+DEBUG = False
+DEVELOPMENT_MODE = False
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 #   "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
