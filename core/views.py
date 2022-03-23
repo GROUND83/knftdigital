@@ -2,7 +2,8 @@ from itertools import product
 from pyexpat import model
 from django.shortcuts import render
 from products.models import Product
-from django.forms.models import model_to_dict
+from authors.models import Author
+
 
 # Create your views here.
 def get_product(request):
@@ -21,7 +22,9 @@ def get_product(request):
 
 def about(request):
 
-    return render(request, "about.html")
+    authors = Author.objects.all()
+
+    return render(request, "about.html", context={"authors": authors})
 
 
 def license(request):

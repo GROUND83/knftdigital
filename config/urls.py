@@ -21,7 +21,7 @@ from authors import views as author_vies
 
 urlpatterns = [
     path("", include("core.urls", namespace="core")),
-    path("author/", include("authors.urls", namespace="authors")),
+    # path("author/", include("authors.urls", namespace="authors")),
     path("product/", include("products.urls", namespace="products")),
     path("contact/", include("contacts.urls", namespace="contacts")),
     path("admin/", admin.site.urls),
