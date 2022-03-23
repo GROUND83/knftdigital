@@ -92,7 +92,7 @@
         <li class="tab-link text-white" data-tab="tab-3">Others</li>
 
       </ul>
-      <div id="tab-1" class="tab-content current grid w-full grid-cols-3 gap-12">
+      <div id="tab-1" class="tab-content current grid w-full grid-cols-1 lg:grid-cols-3 gap-12">
         {% for project in projects  %}
         <a href="/product/{{project.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="height: 320px;">
           <div id="fontCard" class="flex flex-col items-start w-full h-full">
@@ -120,7 +120,7 @@
         </a>
         {% endfor %}
       </div>
-      <div id="tab-2" class="tab-content">
+      <div id="tab-2" class="tab-content current grid w-full grid-cols-1 lg:grid-cols-3 gap-12">
         {% for edition in editions  %}
         <a href="/product/{{edition.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="width:200px;height: 320px;">
           <div id="fontCard" class="flex flex-col items-start w-full h-full">
@@ -148,7 +148,7 @@
         </a>
         {% endfor %}
       </div>
-      <div id="tab-3" class="tab-content">
+      <div id="tab-3" class="tab-content current grid w-full grid-cols-1 lg:grid-cols-3 gap-12">
         {% for other in others  %}
         <a href="/product/{{other.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="width:200px;height: 320px;">
           <div id="fontCard" class="flex flex-col items-start w-full h-full">
