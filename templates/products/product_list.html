@@ -28,18 +28,18 @@
 <div class="flex flex-col items-center w-full ">
   <div class="flex flex-col items-center justify-center w-full pt-24 " style="background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 20%, rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.8) 100%), url('{% static "img/loveBack.jpeg" %}') no-repeat center center; height:300px;">
     <div class="flex flex-col items-center justify-center h-full">
-      <h2 class="text-6xl font-bold text-white ">K-NFT Art Gallery</h2>
+      <h2 class="text-2xl lg:text-6xl font-bold text-white ">K-NFT Art Gallery</h2>
       <p class="mt-6 text-xl text-slate500 font-extralight">
         {{count}} works
       </p>
     </div>
-    <div class="flex flex-col items-center justify-center h-full w-full py-3 bg-slate700 rounded-lg px-3 -mb-12" style="max-width:1200px;height:100px;">
-      <form name="myForm" method="GET" action="{% url "products:productList" %}" class="grid grid-cols-9 gap-3 w-full ">
-        <div class=" flex flex-col items-start col-span-2 ">
+    <div class="flex flex-col items-center justify-center py-3 bg-slate700  rounded-lg px-3 container px-3 lg:px-6 mx-auto">
+      <form name=" myForm" method="GET" action="{% url "products:productList" %}" class="grid grid-cols-3 lg:grid-cols-9 gap-3 w-full ">
+        <div class=" flex flex-col items-start col-span-1 lg:col-span-2 ">
           <label for=" title" class="text-slate500">title</label>
           <input value="{{form.title}}" id="title" name="title" placeholder="Search By Title" class="text-balck bg-slate500  rounded-md w-full px-2 py-2 " style="height: 40px;" />
         </div>
-        <div class="flex flex-col items-start  col-span-2 ">
+        <div class="flex flex-col items-start   col-span-1 lg:col-span-2 ">
           <label for="type" class="text-slate500">Type</label>
           <select id="type" name="type" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
             <option value="0" {% if form.s_types == 0 %}selected{% endif %}>
@@ -50,7 +50,7 @@
             {% endfor %}
           </select>
         </div>
-        <div class="flex flex-col items-start  col-span-2">
+        <div class="flex flex-col items-start   col-span-1 lg:col-span-2">
           <label for="project_type" class="text-slate500">Project Type</label>
           <select id="project_type" name="project_type" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
             <option value="0" {% if form.s_project_types == 0 %}selected{% endif %}>all</option>
@@ -59,6 +59,7 @@
             {% endfor %}
           </select>
         </div>
+
         <div class="flex flex-col items-start w-full">
           <p class="text-slate500">CreatedAt</p>
           <div class="grid grid-cols-2  w-full rounded-md overflow-hidden">
@@ -98,11 +99,11 @@
       </form> -->
     </div>
   </div>
-  <section style="max-width:1200px;" class="mt-24 container mx-auto">
+  <section style="" class="mt-24 container mx-auto">
 
     {% if products.count > 0 %}
 
-    <div class="grid w-full grid-cols-2 lg:grid-cols-3 gap-24 ">
+    <div class="grid w-full grid-cols-1 lg:grid-cols-3 gap-24 justify-items-center ">
       {% for product in products  %}
       <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
         <div id="fontCard" class="flex flex-col items-start w-full h-full">
@@ -149,12 +150,12 @@
 
 
   </section>
-  <div class="col-span-5 flex flex-col items-center pb-12 text-white">
+  <div class=" flex flex-row items-center pb-12 text-white mt-6">
     {% if page_obj.has_previous %}
     <a href="?page={{page_obj.previous_page_number}}">Previous</a>
     {% endif %}
     <p>
-      Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+      {{page_obj.number}} of {{page_obj.paginator.num_pages}}
     </p>
 
     {% if page_obj.has_next  %}
@@ -165,13 +166,12 @@
   <script>
     const card = document.querySelectorAll("#card");
     card.forEach(function(cardWrap) {
-
       const fontCard = cardWrap.parentNode
       const backCard = cardWrap.parentNode.nextSibling.nextSibling
-      console.log(fontCard, backCard)
+
       cardWrap.addEventListener("mouseenter", function(event) {
 
-        console.log("enter")
+
         let backCardcheck = backCard.classList.contains("opacity-100");
         if (backCardcheck) {
           backCard.classList.replace("opacity-100", "opacity-0")
@@ -186,7 +186,7 @@
       backCard.addEventListener("mouseleave", function(event) {
         // highlight the mouseenter target
         // event.target.style.color = "purple";
-        console.log("mouseleave")
+
 
         let check = backCard.classList.contains("opacity-100");
         if (check) {
@@ -200,17 +200,6 @@
         }
       })
     });
-    // // This handler will be executed every time the cursor
-    // // is moved over a different list item
-    // card.addEventListener("mouseover", function( event ) {
-    //   // highlight the mouseover target
-    //   event.target.style.color = "orange";
-    //   console.log("leave")
-    //   // reset the color after a short delay
-    //   // setTimeout(function() {
-    //   //   event.target.style.color = "";
-    //   // }, 500);
-    // }, false);
   </script>
 
 </div>

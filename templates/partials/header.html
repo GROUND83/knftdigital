@@ -1,13 +1,13 @@
 {% load static %}
 
 
-<div class=" flex flex-row items-center justify-between w-full h-full px-3 mx-auto contianer lg:px-6 md:px-3 " style="max-width: 1200px; ">
+<div class=" flex flex-col lg:flex-row items-center justify-between h-full px-3 mx-auto contianer lg:px-6 px-3 py-3 lg:py-0 container mx-auto">
   <a href="{% url "cores:home" %}">
     <img src="{% static 'img/logo.svg' %}" style="width:100px" />
   </a>
-  <nav class="h-full text-white">
+  <nav class="h-full text-white mt-3 lg:mt-0">
     <ul class="flex items-center h-full text-sm font-medium">
-      <li class="ml-6">
+      <li class="lg:ml-6">
         <a href="{% url "authors:list" %}" class=" hover:text-primary">ARTIST</a>
       </li>
       <li class="ml-6">
