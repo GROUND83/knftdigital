@@ -60,31 +60,7 @@ class ProductView(ListView):
             "createdAt": createdAt,
             "price": price,
         }
-
-        # filter_args = {}
-        # if title != "":
-        #     filter_args["title__startswith"] = title
-        # if project_type != 0:
-        #     filter_args["project_type__pk"] = project_type
-        # if type != 0:
-        #     filter_args["type__pk"] = type
-        # products = []
-        # if createdAt is True:
-        #     # filter_args["type__pk"] = type
-        #     products = models.Product.objects.filter(**filter_args).order_by(
-        #         "-creationDate"
-        #     )
-        # else:
-        #     products = models.Product.objects.filter(**filter_args).order_by(
-        #         "creationDate"
-        #     )
-        # if price is True:
-        #     # filter_args["type__pk"] = type
-        #     products = models.Product.objects.filter(**filter_args).order_by("-price")
-        # else:
-        #     products = models.Product.objects.filter(**filter_args).order_by("price")
-
-        # context["products"] = products
+        context["count"] = models.Product.objects.all().count
         context["project_types"] = projectTypes
         context["types"] = types
         context["form"] = form
