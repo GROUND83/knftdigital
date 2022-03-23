@@ -11,33 +11,27 @@ from django.views.generic import ListView, DetailView
 class AuthorView(ListView):
     template_name = "about.html"
     model = models.Author
-    paginate_by = 10
-    paginate_orphans = 5
+
     ordering = "created"
-    context_object_name = "authors"
+    # context_object_name = "authors"
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        name = self.request.GET.get("q", "")
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     name = self.request.GET.get("q", "")
 
-        if name != "":
+    #     if name != "":
 
-            queryset = queryset.filter(name__icontains=name)
+    #         queryset = queryset.filter(name__icontains=name)
 
-        return queryset
+    #     return queryset
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     filter_set = models.Author.objects.all()
-    #     # print(filter_set)
-    #     if self.request.GET.get("q"):
-    #         name = self.request.GET.get("q")
-    #         # print(name)
-    #         filter_set = models.Author.objects.filter(name=name)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        filter_set = models.Author.objects.all()
+        # print(filter_set)
 
-    #     print(context)
-    #     context["authors"] = filter_set
-    #     return context
+        context["authors"] = filter_set
+        return context
 
 
 class AuthorDetail(DetailView):
