@@ -57,6 +57,7 @@ PROJECT_APPS = [
 ]
 THIRDPARTY_APPS = [
     "storages",
+    "responsive",
 ]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRDPARTY_APPS
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "responsive.middleware.ResponsiveMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -82,11 +84,39 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "responsive.context_processors.device",
             ],
         },
     },
 ]
 
+RESPONSIVE_MEDIA_QUERIES = {
+    "small": {
+        "verbose_name": _("Small screens"),
+        "min_width": None,
+        "max_width": 640,
+    },
+    "medium": {
+        "verbose_name": _("Medium screens"),
+        "min_width": 641,
+        "max_width": 1024,
+    },
+    "large": {
+        "verbose_name": _("Large screens"),
+        "min_width": 1025,
+        "max_width": 1440,
+    },
+    "xlarge": {
+        "verbose_name": _("XLarge screens"),
+        "min_width": 1441,
+        "max_width": 1920,
+    },
+    "xxlarge": {
+        "verbose_name": _("XXLarge screens"),
+        "min_width": 1921,
+        "max_width": None,
+    },
+}
 WSGI_APPLICATION = "config.wsgi.application"
 if DEVELOPMENT_MODE is True:
     DATABASES = {
