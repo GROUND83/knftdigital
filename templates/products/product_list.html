@@ -130,15 +130,15 @@
             </div>
           </div>
         </div>
-        <div id="backCard" class="flex-col items-start justify-between hidden w-full h-full p-6 transition-all duration-200 ease-in-out opacity-0 cursor-pointer bg-primary">
+        <a href="/product/{{product.id}}" id="backCard" class="flex-col items-start justify-between hidden w-full h-full p-6 transition-all duration-200 ease-in-out opacity-0 cursor-pointer bg-primary">
+
           <div class="flex flex-col items-start">
             <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
             <p class="mt-3 text-justify line-clamp-4">{{product.description}}</p>
           </div>
-          <a href="/product/{{product.id}}" class="px-6 py-2 bg-white text-primary">
-            more
-          </a>
-        </div>
+
+        </a>
+
       </div>
       {% endfor %}
     </div>

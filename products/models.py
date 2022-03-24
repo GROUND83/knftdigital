@@ -75,7 +75,11 @@ class Product(core_models.TimeStampedModel):
     )
     creationDate = models.DateField(null=True, blank=True)
     type = models.ForeignKey(
-        "Type", related_name="products", on_delete=models.SET_NULL, null=True
+        "Type",
+        related_name="products",
+        verbose_name="category",
+        on_delete=models.SET_NULL,
+        null=True,
     )
     dimensionsx = models.CharField(
         max_length=10, null=True, blank=True, verbose_name="x 사이즈", unique=False
@@ -92,7 +96,11 @@ class Product(core_models.TimeStampedModel):
         verbose_name="product_type",
     )
     project_type = models.ForeignKey(
-        "ProjectType", related_name="products", on_delete=models.SET_NULL, null=True
+        "ProjectType",
+        related_name="products",
+        verbose_name="project_theme",
+        on_delete=models.SET_NULL,
+        null=True,
     )
     #
     projectTitle = models.CharField(
@@ -153,7 +161,7 @@ class Product(core_models.TimeStampedModel):
     )
     tags = models.ManyToManyField(Tag, null=True, blank=True, verbose_name="tag")
     theme = models.CharField(
-        max_length=100, null=True, verbose_name="theme", unique=False
+        max_length=100, null=True, verbose_name="work_theme", unique=False
     )
 
     def __str__(self):

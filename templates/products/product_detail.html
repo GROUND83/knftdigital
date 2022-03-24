@@ -105,7 +105,7 @@
   }
 </style>
 <div class=" flex flex-col items-center w-full pt-24">
-  <div class="flex flex-col items-stretch justify-between w-full contianer mx-auto px-3 lg:px-6">
+  <div class="flex flex-col items-center justify-between w-full container mx-auto px-3 lg:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2">
       <div class="flex flex-col items-center overflow-hidden rounded-md ">
         {% if product.image.content_type == "mp4" %}
@@ -116,7 +116,7 @@
         <img src="{{product.image.file800.url}}" />
         {% endif %}
       </div>
-      <div class="flex flex-col items-start justify-between px-6 w-full mt-6 lg:mt-0">
+      <div class="flex flex-col items-start justify-between pl-6 w-full mt-6 lg:mt-0">
         <div class="flex flex-col items-start w-full">
           <div class="flex flex-row items-center justify-between w-full">
 
@@ -239,21 +239,23 @@
   </div>
 
   <p class="text-white text-lg mt-6">YOU MAY ALSO LIKE</p>
-  <div class="py-12 flex flex-col items-center " style="width:1200px;">
+  <div class="py-12 flex flex-col items-center container ">
 
     <div id="image-slider" class="splide w-full">
       <div class="w-full splide__track">
         <ul class="w-full splide__list">
           {% for otherProduct in otherProducts %}
-          <li class="splide__slide">
-            {% if otherProduct.image.content_type == "mp4" %}
-            <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full h-full">
-              <source src="{{otherProduct.image.file360.url}}" />
-            </video>
-            {% else %}
-            <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-full object-cover" />
-            {% endif %}
-          </li>
+          <a href="/product/{{otherProduct.pk}}">
+            <li class="splide__slide">
+              {% if otherProduct.image.content_type == "mp4" %}
+              <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full h-full">
+                <source src="{{otherProduct.image.file360.url}}" />
+              </video>
+              {% else %}
+              <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-full object-cover" />
+              {% endif %}
+            </li>
+          </a>
           {% endfor %}
         </ul>
       </div>
