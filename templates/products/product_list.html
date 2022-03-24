@@ -30,13 +30,13 @@
     <div class="flex flex-col items-center justify-center h-full">
       <h2 class="text-2xl lg:text-6xl font-bold text-white ">K-NFT Art Gallery</h2>
       <p class="mt-6 text-xl text-slate500 font-extralight">
-        {{count}} works
+        {{count}} arts
       </p>
     </div>
     <div class="flex flex-col items-center justify-center py-3 bg-slate700  rounded-lg px-3 container px-3 lg:px-6 mx-auto">
       <form name=" myForm" method="GET" action="{% url "products:productList" %}" class="grid grid-cols-3 lg:grid-cols-9 gap-3 w-full ">
         <div class=" flex flex-col items-start col-span-1 lg:col-span-2 ">
-          <label for=" title" class="text-slate500">title</label>
+          <label for=" title" class="text-slate500">Title</label>
           <input value="{{form.title}}" id="title" name="title" placeholder="Search By Title" class="text-balck bg-slate500  rounded-md w-full px-2 py-2 " style="height: 40px;" />
         </div>
         <div class="flex flex-col items-start   col-span-1 lg:col-span-2 ">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="flex flex-col items-start w-full">
-          <p class="text-slate500">CreatedAt</p>
+          <p class="text-slate500">Created At</p>
           <div class="grid grid-cols-2  w-full rounded-md overflow-hidden">
             <label name="createdAt_id_sort_up" for="createdAt_id_sort_up" class="box-radio-input flex flex-col items-center ">
               <input type="radio" name="createdAt" id="createdAt_id_sort_up" value='1' {% if form.createdAt == 1 %}checked{% endif %}>
@@ -109,7 +109,7 @@
         <div id="fontCard" class="flex flex-col items-start w-full h-full">
           <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
             {% if product.image.content_type == "mp4" %}
-            <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+            <video autoplay muted loop playsinline poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
               <source src="{{product.image.file360.url}}" />
             </video>
             {% else %}
