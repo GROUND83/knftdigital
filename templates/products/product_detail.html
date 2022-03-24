@@ -239,44 +239,80 @@
   </div>
 
   <p class="text-white text-lg mt-6">YOU MAY ALSO LIKE</p>
-  <div class="py-12 flex flex-col items-center container " style="width:1200px">
+  <div class="py-12 flex flex-col items-center container px-3 lg:px-6 ">
 
-    <div id="image-slider" class="splide w-full">
-      <div class="w-full splide__track">
-        <ul class="w-full splide__list">
-          {% for otherProduct in otherProducts %}
-          <a href="/product/{{otherProduct.pk}}">
-            <li class="splide__slide">
-              {% if otherProduct.image.content_type == "mp4" %}
-              <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full h-full" playsinline>
-                <source src="{{otherProduct.image.file360.url}}" />
-              </video>
-              {% else %}
-              <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-full object-cover" />
-              {% endif %}
-            </li>
-          </a>
-          {% endfor %}
-        </ul>
-      </div>
+
+    <div class="w-full slide_slick w-full">
+
+      {% for otherProduct in otherProducts %}
+      <a href="/product/{{otherProduct.pk}}">
+        <div class="">
+          {% if otherProduct.image.content_type == "mp4" %}
+          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full h-full" playsinline>
+            <source src="{{otherProduct.image.file360.url}}" />
+          </video>
+          {% else %}
+          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-full object-cover" />
+          {% endif %}
+        </div>
+      </a>
+      {% endfor %}
+
     </div>
+
 
   </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    new Splide('#image-slider', {
-      perPage: 3,
-      rewind: true,
-      fixedWidth: 280,
-      fixedHeight: 280,
-      gap: 10,
-      rewind: true,
-      pagination: false,
-      cover: true,
-      isNavigation: true,
-    }).mount();
+  $(document).ready(function() {
+    $('.slide_slick').slick({
+      dots: true,
+      infinite: false,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [{
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
   });
+  document.addEventListener('DOMContentLoaded', function() {
+    // new Splide('#image-slider', {
+    //   perPage: 3,
+    //   rewind: true,
+    //   fixedWidth: 280,
+    //   fixedHeight: 280,
+    //   gap: 10,
+    //   rewind: true,
+    //   pagination: false,
+    //   cover: true,
+    //   isNavigation: true,
+    // }).mount();
+  });
+
   const shareButton = document.querySelector('.share-button');
   const shareDialog = document.querySelector('.share-dialog');
 
