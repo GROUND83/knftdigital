@@ -262,7 +262,10 @@
 
 
   </div>
-
+  <div class="flex flex-row items-center">
+    <span class="prevArrow">이전</span>
+    <span class="nextArrow">다음</span>
+  </div>
 </div>
 <style>
   .slide {
@@ -288,8 +291,8 @@
       rows: 0,
       arrows: false,
       dots: false,
-      prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-      nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+      prevArrow: $('.prevArrow'),
+      nextArrow: $('.nextArrow'),
       responsive: [{
         breakpoint: 1024,
         settings: {
