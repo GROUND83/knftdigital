@@ -31,15 +31,16 @@ class ProductView(ListView):
             filter_args["project_type__pk"] = project_type
         if type != 0:
             filter_args["type__pk"] = type
-        if createdAt is 0:
+        queryset = queryset.filter(**filter_args)
+        if createdAt == 0:
             # filter_args["type__pk"] = type
             queryset = queryset.filter(**filter_args).order_by("-creationDate")
-        elif createdAt is 1:
+        elif createdAt == 1:
             queryset = queryset.filter(**filter_args).order_by("creationDate")
-        if price is 1:
+        if price == 1:
             # filter_args["type__pk"] = type
             queryset = queryset.filter(**filter_args).order_by("-price")
-        elif price is 0:
+        elif price == 0:
             queryset = queryset.filter(**filter_args).order_by("price")
 
         return queryset
