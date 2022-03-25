@@ -76,19 +76,19 @@
         </div>
         <div class="flex flex-col items-start col-span-1 lg:col-span-4">
 
-          < <label for="price" class="text-slate500">Price</label>
-            <select id="price" name="price" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
-              <option value="3" {% if form.s_types == 3 %}selected{% endif %}>
-                Price
-              </option>
-              <option value="0" {% if form.s_types == 0 %}selected{% endif %}>
-                Price:low to high
-              </option>
-              <option value="1" {% if form.s_types == 1 %}selected{% endif %}>
-                Price:high to low
-              </option>
-            </select>
-            <!-- <div class="grid grid-cols-2  w-full rounded-md overflow-hidden">
+          <label for="price" class="text-slate500">Price</label>
+          <select id="price" name="price" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
+            <option value="3" {% if form.s_types == 3 %}selected{% endif %}>
+              Price
+            </option>
+            <option value="0" {% if form.s_types == 0 %}selected{% endif %}>
+              Price:low to high
+            </option>
+            <option value="1" {% if form.s_types == 1 %}selected{% endif %}>
+              Price:high to low
+            </option>
+          </select>
+          <!-- <div class="grid grid-cols-2  w-full rounded-md overflow-hidden">
             <label name="price_id_sort_up" for="price_id_sort_up" class="box-radio-input flex flex-col items-center ">
               <input type="radio" name="price" id="price_id_sort_up" value='1' {% if form.price == 1 %}checked{% endif %}>
               <span>
