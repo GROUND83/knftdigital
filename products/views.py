@@ -27,7 +27,7 @@ class ProductView(ListView):
         if title != "":
             filter_args["title__icontains"] = title
         if author != "":
-            filter_args["author_name__icontains"] = author
+            filter_args["author__name__icontains"] = author
         if project_type != 0:
             filter_args["project_type__pk"] = project_type
         if type != 0:
