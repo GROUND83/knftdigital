@@ -23,6 +23,7 @@ class ProductView(ListView):
         createdAt = int(self.request.GET.get("createdAt", 3))
         price = int(self.request.GET.get("price", 3))
         filter_args = {}
+
         if title != "":
             filter_args["title__icontains"] = title
         if author != "":
@@ -31,17 +32,18 @@ class ProductView(ListView):
             filter_args["project_type__pk"] = project_type
         if type != 0:
             filter_args["type__pk"] = type
+
         queryset = queryset.filter(**filter_args)
         if createdAt == 0:
             # filter_args["type__pk"] = type
-            queryset = queryset.filter(**filter_args).order_by("-creationDate")
+            queryset = queryset.order_by("-creationDate")
         elif createdAt == 1:
-            queryset = queryset.filter(**filter_args).order_by("creationDate")
+            queryset = queryset.order_by("creationDate")
         if price == 1:
             # filter_args["type__pk"] = type
-            queryset = queryset.filter(**filter_args).order_by("-price")
+            queryset = queryset.order_by("-price")
         elif price == 0:
-            queryset = queryset.filter(**filter_args).order_by("price")
+            queryset = queryset.order_by("price")
 
         return queryset
 
