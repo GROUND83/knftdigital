@@ -248,11 +248,11 @@
       <div style="height:290px;width: 270px;">
         <a href="/product/{{otherProduct.pk}}" class="h-full w-full">
           {% if otherProduct.image.content_type == "mp4" %}
-          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer  " playsinline style="height:290px;width: 270px;">
+          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer  " playsinline style="height:290px;">
             <source src="{{otherProduct.image.file360.url}}" />
           </video>
           {% else %}
-          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer  object-cover" style="height:290px;width: 270px;" />
+          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer  object-cover" style="height:290px;" />
           {% endif %}
         </a>
       </div>
@@ -279,16 +279,13 @@
       vertical: false,
       slidesToShow: 4,
       slidesToScroll: 4,
-      prevArrow: "<button type='button' class='slick-next'>Next</button>",
-      nextArrow: "<button type='button' class='slick-prev'>Prev</button>",
-      dotsClass: "slick-dots",
+      variableWidth: true,
+
       responsive: [{
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-
-
         }
       }, {
         breakpoint: 600,
