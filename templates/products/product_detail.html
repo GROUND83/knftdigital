@@ -242,7 +242,7 @@
   <div class="py-12 flex flex-col items-center container px-3 lg:px-6 ">
 
 
-    <div class=" slide_slick w-full">
+    <div class="slide_slick ">
 
       {% for otherProduct in otherProducts %}
       <div style="height:290px;width: 270px;">
@@ -267,7 +267,7 @@
 <script>
   $(document).ready(function() {
     $('.slide_slick').slick({
-      slide: 'a',
+      slide: 'div',
       dots: true,
       arrows: true,
       autoplay: ture,
