@@ -64,12 +64,14 @@
           <p class="text-slate500">Created At</p>
           <div class="grid grid-cols-2  w-full rounded-md overflow-hidden">
             <label name="createdAt_id_sort_up" for="createdAt_id_sort_up" class="box-radio-input flex flex-col items-center ">
+              <!-- <input type="radio" name="createdAt" id="createdAt_id_sort_up" value='1'> -->
               <input type="radio" name="createdAt" id="createdAt_id_sort_up" value='1' {% if form.createdAt == 1 %}checked{% endif %}>
               <span>
                 <i class="bi bi-arrow-up"></i></span>
             </label>
             <label name="createdAt_id_sort_down" for="createdAt_id_sort_down" class="box-radio-input flex flex-col items-center">
-              <input type="radio" name="createdAt" id="createdAt_id_sort_down" value='0' {% if form.createdAt == 0 %}checked{% endif %}>
+              <input type="radio" name="createdAt" id="createdAt_id_sort_down" value='0'>
+              <!-- <input type="radio" name="createdAt" id="createdAt_id_sort_down" value='0' {% if form.createdAt == 0 %}checked{% endif %}> -->
               <span><i class=" bi bi-arrow-down"></i></span>
             </label>
           </div>
@@ -78,12 +80,14 @@
           <p class="text-slate500">Price</p>
           <div class="grid grid-cols-2  w-full rounded-md overflow-hidden">
             <label name="price_id_sort_up" for="price_id_sort_up" class="box-radio-input flex flex-col items-center ">
-              <input type="radio" name="price" id="price_id_sort_up" value='1' {% if form.price == 1 %}checked{% endif %}>
+              <!-- <input type="radio" name="price" id="price_id_sort_up" value='1' {% if form.price == 1 %}checked{% endif %}> -->
+              <input type="radio" name="price" id="price_id_sort_up" value='1'>
               <span>
                 <i class="bi bi-arrow-up"></i></span>
             </label>
             <label name="price_id_sort_down" for="price_id_sort_down" class="box-radio-input flex flex-col items-center">
-              <input type="radio" name="price" id="price_id_sort_down" value='0' {% if form.price == 0 %}checked{% endif %}>
+              <input type="radio" name="price" id="price_id_sort_down" value='0'>
+              <!-- <input type="radio" name="price" id="price_id_sort_down" value='0' {% if form.price == 0 %}checked{% endif %}> -->
               <span><i class=" bi bi-arrow-down"></i></span>
             </label>
           </div>
@@ -150,7 +154,7 @@
 
 
   </section>
-  <div class=" flex flex-row items-center pb-12 text-white mt-6">
+  <!-- <div class=" flex flex-row items-center pb-12 text-white mt-6">
     {% if page_obj.has_previous %}
     <a href="?page={{page_obj.previous_page_number}}">Previous</a>
     {% endif %}
@@ -162,7 +166,7 @@
     <a href="?page={{page_obj.next_page_number}}">Next</a>
     {% endif %}
 
-  </div>
+  </div> -->
   <script>
     const card = document.querySelectorAll("#card");
     card.forEach(function(cardWrap) {
