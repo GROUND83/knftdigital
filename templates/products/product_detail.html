@@ -242,17 +242,17 @@
   <div class="py-12 flex flex-col items-center container px-3 lg:px-6 ">
 
 
-    <div class=" slide_slick w-full">
+    <div class="slide_slick ">
 
       {% for otherProduct in otherProducts %}
       <div>
         <a href="/product/{{otherProduct.pk}}">
           {% if otherProduct.image.content_type == "mp4" %}
-          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer  h-full" playsinline style="height:290px">
+          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer" playsinline style="height:290px">
             <source src="{{otherProduct.image.file360.url}}" />
           </video>
           {% else %}
-          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer w-full h-full object-cover" style="height:290px" />
+          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer   object-cover" style="height:290px" />
           {% endif %}
         </a>
       </div>
@@ -272,7 +272,7 @@
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
-      arrows: true
+
 
       // responsive: [{
       //     breakpoint: 1024,

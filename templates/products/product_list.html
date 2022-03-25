@@ -123,10 +123,10 @@
                 <p class="">Reserve Price</p>
                 <p class="text-xl font-bold">{{product.price}} ETH</p>
               </div>
-              <div class="flex flex-col items-center cursor-pointer">
+              <a href="/author/{{product.author.id}}" class="flex flex-col items-center cursor-pointer">
                 <img src="{{product.author.avator.thumnail.url}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
                 <p>{{product.author}}</p>
-              </div>
+              </a>
             </div>
           </div>
         </div>

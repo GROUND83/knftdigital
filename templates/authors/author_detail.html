@@ -92,9 +92,9 @@
         <li class="tab-link text-white" data-tab="tab-3">Others</li>
 
       </ul>
-      <div id="tab-1" class="tab-content current grid w-full grid-cols-1 lg:grid-cols-3 gap-12">
+      <div id="tab-1" class="tab-content current grid w-full grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-12">
         {% for project in projects  %}
-        <a href="/product/{{project.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg " style="max-height: 470px;">
+        <a href="/product/{{project.id}}" class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden  rounded-lg ">
           <div id="fontCard" class="flex flex-col items-start w-full h-full">
             <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
               {% if project.image.content_type == "mp4" %}
