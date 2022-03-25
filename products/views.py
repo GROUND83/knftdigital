@@ -8,9 +8,9 @@ from django.views.generic import ListView, DetailView, FormView, View
 class ProductView(ListView):
     template_name = "products/product_list.html"
     model = models.Product
-    paginate_by = 9
-    paginate_orphans = 5
-    # ordering = "created"
+    # paginate_by = 9
+    # paginate_orphans = 5
+    ordering = "title"
     context_object_name = "products"
 
     def get_queryset(self):
