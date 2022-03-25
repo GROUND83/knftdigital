@@ -63,10 +63,13 @@
         <div class="flex flex-col items-start col-span-1 lg:col-span-4">
           <label for="createdAt" class="text-slate500">Created At</label>
           <select id="createdAt" name="createdAt" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
+            <option value="3" {% if form.s_types == 3 %}selected{% endif %}>
+              Created at
+            </option>
             <option value="0" {% if form.s_types == 0 %}selected{% endif %}>
               Newest to Oldest
             </option>
-            <option value="1" {% if form.s_types == 0 %}selected{% endif %}>
+            <option value="1" {% if form.s_types ==1 %}selected{% endif %}>
               Oldest to Newest
             </option>
           </select>
@@ -75,10 +78,13 @@
 
           < <label for="price" class="text-slate500">Price</label>
             <select id="price" name="price" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
+              <option value="3" {% if form.s_types == 3 %}selected{% endif %}>
+                Price
+              </option>
               <option value="0" {% if form.s_types == 0 %}selected{% endif %}>
                 Price:low to high
               </option>
-              <option value="1" {% if form.s_types == 0 %}selected{% endif %}>
+              <option value="1" {% if form.s_types == 1 %}selected{% endif %}>
                 Price:high to low
               </option>
             </select>
