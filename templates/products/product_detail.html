@@ -262,10 +262,7 @@
 
 
   </div>
-  <div class="flex flex-row items-center justify-center">
-    <button class='slide-prev'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-    <button class='slide-next'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-  </div>
+
 </div>
 <style>
   .slide {
@@ -291,6 +288,8 @@
       rows: 0,
       arrows: true,
       dots: false,
+      prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>',
+      nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>',
       responsive: [{
         breakpoint: 1024,
         settings: {
@@ -312,15 +311,6 @@
       }]
     }).on('setPosition', function(event, slick) {
       slick.$slides.css('height', slick.$slideTrack.height() + 'px');
-    });
-    $('.slide-prev').click(function(e) {
-      //e.preventDefault(); 
-      $('.slider-two').slick('slickPrev');
-    });
-
-    $('.slide-next').click(function(e) {
-      //e.preventDefault(); 
-      $('.slider-two').slick('slickNext');
     });
 
 
