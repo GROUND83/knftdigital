@@ -17,6 +17,7 @@ class ProductView(ListView):
         queryset = super().get_queryset()
         queryset.order_by("title")
         title = self.request.GET.get("title", "")
+        author = self.request.GET.get("author", "")
         project_type = int(self.request.GET.get("project_type", 0))
         type = int(self.request.GET.get("type", 0))
         createdAt = int(self.request.GET.get("createdAt", 3))
@@ -24,6 +25,8 @@ class ProductView(ListView):
         filter_args = {}
         if title != "":
             filter_args["title__icontains"] = title
+        if author != "":
+            filter_args["author_name__icontains"] = author
         if project_type != 0:
             filter_args["project_type__pk"] = project_type
         if type != 0:
@@ -50,6 +53,7 @@ class ProductView(ListView):
         # products = models.Product.objects.all()
         # print(filter_set)
         title = self.request.GET.get("title", "")
+        author = self.request.GET.get("author", "")
         project_type = int(self.request.GET.get("project_type", 0))
         type = int(self.request.GET.get("type", 0))
         createdAt = int(self.request.GET.get("createdAt", 3))
@@ -60,6 +64,7 @@ class ProductView(ListView):
             "s_types": type,
             "createdAt": createdAt,
             "price": price,
+            "author": author,
         }
         context["count"] = models.Product.objects.all().count
         context["project_types"] = projectTypes

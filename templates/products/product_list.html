@@ -39,7 +39,11 @@
           <label for=" title" class="text-slate500">Title</label>
           <input value="{{form.title}}" id="title" name="title" placeholder="Search By Title" class="text-balck bg-slate500  rounded-md w-full px-2 py-2 " style="height: 40px;" />
         </div>
-        <div class="flex flex-col items-start   col-span-1 lg:col-span-4 ">
+        <div class=" flex flex-col items-start col-span-1 lg:col-span-4 ">
+          <label for="author" class="text-slate500">Artist</label>
+          <input value="{{form.author}}" id="author" name="author" placeholder="Search By Artist" class="text-balck bg-slate500  rounded-md w-full px-2 py-2 " style="height: 40px;" />
+        </div>
+        <div class="flex flex-col items-start  col-span-1 lg:col-span-4 ">
           <label for="type" class="text-slate500">Type</label>
           <select id="type" name="type" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
             <option value="0" {% if form.s_types == 0 %}selected{% endif %}>
@@ -50,7 +54,7 @@
             {% endfor %}
           </select>
         </div>
-        <div class="flex flex-col items-start   col-span-1 lg:col-span-4">
+        <div class="flex flex-col items-start   col-span-1 lg:col-span-3">
           <label for="project_type" class="text-slate500">Project Type</label>
           <select id="project_type" name="project_type" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
             <option value="0" {% if form.s_project_types == 0 %}selected{% endif %}>all</option>
@@ -60,7 +64,7 @@
           </select>
         </div>
 
-        <div class="flex flex-col items-start col-span-1 lg:col-span-4">
+        <div class="flex flex-col items-start col-span-1 lg:col-span-3">
           <label for="createdAt" class="text-slate500">Created At</label>
           <select id="createdAt" name="createdAt" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
             <option value="3" {% if form.createdAt == 3 %}selected{% endif %}>
@@ -74,7 +78,7 @@
             </option>
           </select>
         </div>
-        <div class="flex flex-col items-start col-span-1 lg:col-span-4">
+        <div class="flex flex-col items-start col-span-1 lg:col-span-3">
 
           <label for="price" class="text-slate500">Price</label>
           <select id="price" name="price" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
@@ -101,7 +105,7 @@
           </div> -->
 
         </div>
-        <div class="flex flex-col items-center justify-end col-span-1 lg:col-span-4">
+        <div class="flex flex-col items-center justify-end col-span-1 lg:col-span-3">
           <button class="px-3 py-2 bg-slate500 w-full rounded-md" style="height: 40px;"><i class="bi bi-search"></i></button>
         </div>
       </form>
