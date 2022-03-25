@@ -17,7 +17,7 @@ class ProductView(ListView):
         queryset = super().get_queryset()
         queryset.order_by("title")
         title = self.request.GET.get("title", "")
-        project_type = int(self.request.GET.get("project_type", 3))
+        project_type = int(self.request.GET.get("project_type", 0))
         type = int(self.request.GET.get("type", 0))
         createdAt = int(self.request.GET.get("createdAt", 3))
         price = int(self.request.GET.get("price", 3))
