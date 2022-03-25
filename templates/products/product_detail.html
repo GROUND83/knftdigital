@@ -239,20 +239,20 @@
   </div>
 
   <p class="text-white text-lg mt-6">YOU MAY ALSO LIKE</p>
-  <div class="py-12 flex flex-col items-center container px-3 lg:px-6 ">
+  <div class="py-12 container px-3 lg:px-6 mx-auto">
 
 
-    <div class="slide_slick w-full ">
+    <div class="slide_slick w-full">
 
       {% for otherProduct in otherProducts %}
-      <div style="height:290px;width: 270px;" class="p-3">
+      <div style="max-height:290px" class="p-3 w-full">
         <a href="/product/{{otherProduct.pk}}" class="h-full w-full ">
           {% if otherProduct.image.content_type == "mp4" %}
-          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer  " playsinline style="height:290px;">
+          <video autoplay muted loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer  w-full " playsinline style="height:290px;">
             <source src="{{otherProduct.image.file360.url}}" />
           </video>
           {% else %}
-          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer  object-cover" style="height:290px;" />
+          <img src="{{otherProduct.image.file360.url}}" class="cursor-pointer  object-cover w-full " style="height:290px;" />
           {% endif %}
         </a>
       </div>
