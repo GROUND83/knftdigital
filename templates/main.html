@@ -49,13 +49,13 @@
     {% for product in main_product  %}
     <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
       <div id="fontCard" class="flex flex-col items-start w-full h-full">
-        <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
+        <div class="flex flex-col items-center justify-start w-full bg-white overflow-hidden" id="card">
           {% if product.image.content_type == "mp4" %}
-          <video autoplay muted playsinline loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full">
+          <video autoplay muted playsinline loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px">
             <source src="{{product.image.file360.url}}" />
           </video>
           {% else %}
-          <img src="{{product.image.file360.url}}" class="cursor-pointer object-cover w-full" />
+          <img src="{{product.image.file360.url}}" style="height: 300px" class="cursor-pointer object-cover" />
           {% endif %}
         </div>
         <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
