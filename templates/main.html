@@ -45,20 +45,20 @@
     The LOVE
   </h2>
   <p class="mt-6 text-lg font-light tracking-wider text-justify text-slate500">K-NFT introduces Hangul Calligraphy, a hand-drawn pictogram. Enjoy the works of 'Love', the theme of which were written by Korea's leading calligraphers.</p>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24 mt-12 justify-items-center">
+  <div class="grid w-full grid-cols-1 lg:grid-cols-3 gap-24 justify-items-center mt-12">
     {% for product in main_product  %}
-    <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg ">
-      <div id="fontCard" class="flex flex-col items-start w-full">
+    <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
+      <div id="fontCard" class="flex flex-col items-start w-full h-full">
         <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
           {% if product.image.content_type == "mp4" %}
-          <video autoplay muted playsinline loop poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer w-full " style="aspect-ratio: 1/1;">
-            <source src="{{product.image.file360.url}}" />
+          <video autoplay muted loop playsinline poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+            <source src="{{product.image.file800.url}}" />
           </video>
           {% else %}
-          <img src="{{product.image.file360.url}}" style="aspect-ratio: 1/1;" class="cursor-pointer object-cover w-full" />
+          <img src="{{product.image.file800.url}}" style="height: 300px;width: 300px;" class="cursor-pointer object-cover " />
           {% endif %}
         </div>
-        <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px">
+        <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
           <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
           <div class="flex flex-row items-end justify-between w-full">
             <div class="flex flex-col items-start">
@@ -73,6 +73,7 @@
         </div>
       </div>
       <a href="/product/{{product.id}}" id="backCard" class="flex-col items-start justify-between hidden w-full h-full p-6 transition-all duration-200 ease-in-out opacity-0 cursor-pointer bg-primary">
+
         <div class="flex flex-col items-start">
           <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
           <p class="mt-3 text-justify line-clamp-4">{{product.description}}</p>
