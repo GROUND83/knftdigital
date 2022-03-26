@@ -107,16 +107,16 @@
 <div class=" flex flex-col items-center w-full pt-24">
   <div class="flex flex-col items-center justify-between w-full container mx-auto px-3 lg:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2">
-      <div class="flex flex-col items-center overflow-hidden rounded-md ">
+      <div class="flex flex-col items-center overflow-hidden rounded-md col-span-1 ">
         {% if product.image.content_type == "mp4" %}
-        <video autoplay muted loop poster="{{product.image.thumnail.url}}" playsinline>
+        <video autoplay muted loop poster="{{product.image.thumnail.url}}" playsinline class="w-full">
           <source src="{{product.image.file800.url}}" />
         </video>
         {% else %}
-        <img src="{{product.image.file800.url}}" />
+        <img src="{{product.image.file800.url}}" class="w-full" />
         {% endif %}
       </div>
-      <div class="flex flex-col items-start justify-between lg:pl-6 w-full mt-6 lg:mt-0">
+      <div class="flex flex-col items-start justify-between lg:pl-6  col-span-1 mt-6 lg:mt-0">
         <div class="flex flex-col items-start w-full">
           <div class="flex flex-row items-center justify-between w-full">
 
