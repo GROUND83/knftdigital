@@ -19,9 +19,10 @@ def contact(request):
             Contact.objects.create(
                 email=email, type=type, helpType=helpType, name=name, message=message
             )
+            messagetext = f"{name}\n{message}"
             send_mail(
                 helpType,
-                message,
+                messagetext,
                 email,
                 ["info@k-nft.io"],
                 fail_silently=False,
