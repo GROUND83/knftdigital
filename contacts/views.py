@@ -20,13 +20,14 @@ def contact(request):
                 email=email, type=type, helpType=helpType, name=name, message=message
             )
             messagetext = f"{name}\n{message}"
-            send_mail(
+            send = send_mail(
                 helpType,
                 messagetext,
                 email,
                 ["info@k-nft.io"],
                 fail_silently=False,
             )
+            print(send)
             return render(request, "success.html")
     else:
         form_class = ContactForm()
