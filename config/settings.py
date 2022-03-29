@@ -33,6 +33,10 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = True
 DEVELOPMENT_MODE = False
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_API_KEY = os.getenv["SENDGRID_API_KEY"]
+SENDGRID_SANDBOX_MODE_IN_DEBUG = True
+SENDGRID_ECHO_TO_STDOUT = True
 
 #   "app-997c2533-1f72-4713-aeae-74894592075d-do-user-11103052-0.b.db.ondigitalocean.com",
 # ALLOWED_HOSTS += [os.environ.get("DJANGO_ALLOWED_HOST")]
@@ -167,7 +171,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-SENDGRID_API_KEY = os.getenv["SENDGRID_API_KEY"]
-SENDGRID_SANDBOX_MODE_IN_DEBUG = True
-SENDGRID_ECHO_TO_STDOUT = True
