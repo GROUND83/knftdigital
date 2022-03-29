@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import ContactForm, SubscripbleForm
 from .models import Contact
+from django.core.mail import send_mail
 
 
 def contact(request):
@@ -18,7 +19,13 @@ def contact(request):
             Contact.objects.create(
                 email=email, type=type, helpType=helpType, name=name, message=message
             )
-
+            send_mail(
+                helpType,
+                message,
+                email,
+                ["info@k-nft.io"],
+                fail_silently=False,
+            )
             return render(request, "success.html")
     else:
         form_class = ContactForm()

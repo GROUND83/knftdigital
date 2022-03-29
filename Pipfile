@@ -4,13 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "==3.2"
 django-dotenv = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 dj-database-url = "*"
 django-storages = "*"
 boto3 = "*"
+django-sendgrid-v5 = "*"
+Django = "==3.2"
 
 [dev-packages]
 
