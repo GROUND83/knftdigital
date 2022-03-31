@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_name %} home {% endblock page_name %}
 
 {%block content %}
@@ -87,7 +88,305 @@
     More notable NFTs
   </a>
 </section>
+<section class="w-full text-white flex flex-col items-center" style="background: linear-gradient(to right, rgba(29, 31, 35, 1) 10%,  rgba(29, 31, 35, 0.9) 50%, rgba(29, 31, 35, 0.6)  100%), url('{% static "img/loveBack.jpeg" %}') no-repeat center center; ">
+  <div class="flex flex-col items-center w-full py-24 container ">
+    <p class="text-xl font-light text-white">The Korean Alphabet</p>
+    <h2 class="mt-2 text-5xl text-white">
+      Hangul
+    </h2>
+    <p class="mt-6 text-lg font-light tracking-wider text-justify text-slate500">
+      Hangul is the alphabet of the written Korean language. It is comprised of 24 letters (originally 28), including 14 consonants and 10 vowels. Consonants are represented by curved or angled lines and vowels consist of a single vertical or horizontal line with short perpendicular lines on one side.
+    </p>
+    <div class="mt-12 w-full">
+      <div class="grid grid-cols-10 gap-2 w-full">
 
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅏ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            A
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅑ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            YA
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅓ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            AW
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅕ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            YAW
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅗ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            O
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅛ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            YO
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅜ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            OO
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅠ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            YOO
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅡ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            EU or U
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-primary border-primary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-primary">
+            ㅣ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            I or EE
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-10 gap-2 mt-12">
+
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㄱ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            K or G
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㄴ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            N
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㄷ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            D or T
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㄹ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            R or L
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅁ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            M
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅂ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            B or P
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅅ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            S
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅇ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            NG
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅈ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            J
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅊ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            CH
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅋ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            K
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅌ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            T
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅍ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            P
+          </p>
+        </div>
+        <div class="flex flex-col items-center justify-center border divide-y divide-secondary border-secondary">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 font-bold text-secondary">
+            ㅎ
+          </p>
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm font-thin">
+            H
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-row items-start justify-center w-full mt-12 ">
+        <div class="flex flex-col items-center justify-center ">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-4xl">
+            사
+          </p>
+          <div class="flex flex-row items-center justify-center mt-3">
+            <div class="flex flex-col items-center mx-1 border divide-y border-secondary divide-secondary" style="width:70px;">
+              <p class="flex flex-col items-center justify-center p-1 text-4xl">
+                ㅅ
+              </p>
+              <p class="flex flex-col items-center justify-center p-1 text-sm">
+                S
+              </p>
+            </div>
+            <div class="flex flex-col items-center mx-1 border divide-y border-primary divide-primary" style="width:70px;">
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-4xl">
+                ㅏ
+              </p>
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm">
+                A
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-center ml-3">
+          <p class="flex flex-col items-center justify-center flex-1 p-1 text-4xl">
+            랑
+          </p>
+          <div class="flex flex-row items-center justify-center mx-1 mt-3">
+            <div class="flex flex-col items-center mx-1 border divide-y border-secondary divide-secondary" style="width:70px;">
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-4xl">
+                ㄹ
+              </p>
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm">
+                R or L
+              </p>
+            </div>
+            <div class="flex flex-col items-center mx-1 border divide-y border-primary divide-primary" style="width:70px;">
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-4xl">
+                ㅏ
+              </p>
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm">
+                A
+              </p>
+            </div>
+            <div class="flex flex-col items-center mx-1 border divide-y border-secondary divide-secondary" style="width:70px;">
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-4xl">
+                ㅇ
+              </p>
+              <p class="flex flex-col items-center justify-center flex-1 p-1 text-sm">
+                NG
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <h2 class="mt-24 text-5xl text-white">
+      Korean calligraphy
+    </h2>
+
+    <p class="mt-6 text-lg font-light tracking-wider text-justify text-slate500">
+      Korean calligraphy is the art of freehand Hangul script. This style of art breathes life into Hangul’s geometric alphabet by adding soft curves and natural movement. Calligraphy turns words into stories and evokes style and emotion, and K-NFT exhibits the work of talented Korean artists who find and create beauty with Hangul calligraphy.
+    </p>
+
+  </div>
+</section>
+<section class="flex flex-col items-center w-full py-24 bg-secondary ">
+  <div class="container">
+    <div class="flex flex-col items-center w-full">
+      <p class="text-xl font-light text-white">Future Project</p>
+      <h2 class="mt-6 text-5xl text-white bg-primary px-24 py-6">
+        The Road
+      </h2>
+
+      <p class="mt-6 font-serif text-3xl leading-10 text-justify text-primary">
+        Photography is coming soon to K-NFT through the work of
+        documentary photographer Il-seop Lee, who captures the essence of
+        life in Korea in photos.
+      </p>
+
+      <p class="mt-12 font-serif text-3xl leading-10 text-justify text-primary">
+        K-NFT will also exhibit the work of Lee Cheol-soo, a Korean
+        representative woodblock artist. Like the calligraphy of the
+        “Love” collection, Cheol-soo’s work utilizes Hangul and embodies
+        Korean culture.
+      </p>
+    </div>
+  </div>
+</section>
 <script>
   const card = document.querySelectorAll("#card");
   card.forEach(function(cardWrap) {
