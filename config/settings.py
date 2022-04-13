@@ -30,8 +30,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1 == True
-DEBUG = False
-DEVELOPMENT_MODE = False
+DEBUG = True
+DEVELOPMENT_MODE = True
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
@@ -61,6 +61,7 @@ PROJECT_APPS = [
 ]
 THIRDPARTY_APPS = [
     "storages",
+    "responsive",
 ]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRDPARTY_APPS
 MIDDLEWARE = [
@@ -72,7 +73,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
+MIDDLEWARE_CLASSES = ("responsive.middleware.ResponsiveMiddleware",)
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
@@ -86,6 +87,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "responsive.context_processors.device",
             ],
         },
     },

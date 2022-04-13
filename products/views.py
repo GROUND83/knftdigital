@@ -1,6 +1,7 @@
 from pyexpat import model
 from django.shortcuts import render
 from . import models, forms
+from authors.models import Author
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView, FormView, View
 
@@ -14,36 +15,46 @@ class ProductView(ListView):
     context_object_name = "products"
 
     def get_queryset(self):
+        print("서치", self.request.GET)
         queryset = super().get_queryset()
         queryset.order_by("title")
-        title = self.request.GET.get("title", "")
-        author = self.request.GET.get("author", "")
+        sort = int(self.request.GET.get("sort", 0))
+        artist = int(self.request.GET.get("artists", 0))
         project_type = int(self.request.GET.get("project_type", 0))
+        searchtext = self.request.GET.get("searchtext", "")
         type = int(self.request.GET.get("type", 0))
-        createdAt = int(self.request.GET.get("createdAt", 3))
-        price = int(self.request.GET.get("price", 3))
+
         filter_args = {}
 
-        if title != "":
-            filter_args["title__icontains"] = title
-        if author != "":
-            filter_args["author__name__icontains"] = author
+        # if title != "":
+        #     filter_args["title__icontains"] = title
+
+        if artist != 0:
+            filter_args["author__pk"] = artist
         if project_type != 0:
             filter_args["project_type__pk"] = project_type
         if type != 0:
             filter_args["type__pk"] = type
 
         queryset = queryset.filter(**filter_args)
-        if createdAt == 0:
+
+        if sort == 0:
             # filter_args["type__pk"] = type
             queryset = queryset.order_by("-creationDate")
-        elif createdAt == 1:
+        elif sort == 1:
             queryset = queryset.order_by("creationDate")
-        if price == 1:
+        elif sort == 2:
             # filter_args["type__pk"] = type
-            queryset = queryset.order_by("-price")
-        elif price == 0:
             queryset = queryset.order_by("price")
+        elif sort == 3:
+            queryset = queryset.order_by("-price")
+
+        if searchtext != "":
+            queryset = (
+                queryset.filter(title__icontains=searchtext)
+                | queryset.filter(description__icontains=searchtext)
+                | queryset.filter(tags__name__icontains=searchtext)
+            )
 
         return queryset
 
@@ -52,25 +63,31 @@ class ProductView(ListView):
 
         projectTypes = models.ProjectType.objects.all()
         types = models.Type.objects.all()
+        artist = Author.objects.all()
 
         # products = models.Product.objects.all()
         # print(filter_set)
         title = self.request.GET.get("title", "")
-        author = self.request.GET.get("author", "")
+        # author = self.request.GET.get("author", "")
+        # print(author)
         project_type = int(self.request.GET.get("project_type", 0))
+        artist_name = int(self.request.GET.get("artists", 0))
         type = int(self.request.GET.get("type", 0))
-        createdAt = int(self.request.GET.get("createdAt", 3))
+        sort = int(self.request.GET.get("sort", 0))
         price = int(self.request.GET.get("price", 3))
+        searchtext = self.request.GET.get("searchtext", "")
         form = {
             "title": title,
             "s_project_types": project_type,
             "s_types": type,
-            "createdAt": createdAt,
+            "s_artists": artist_name,
+            "sort": sort,
             "price": price,
-            "author": author,
+            "searchtext": searchtext,
         }
         context["count"] = models.Product.objects.all().count
         context["project_types"] = projectTypes
+        context["artists"] = artist
         context["types"] = types
         context["form"] = form
 
@@ -93,63 +110,63 @@ class ProductDetail(DetailView):
 class tagSearch(DetailView):
     def get(self, request, tag):
         # ======== HERE, TITLE IS ACTUALLY urltitle! ==================
-        print(tag)
+        print(tag, request)
         products = models.Product.objects.filter(tags__id=tag)
         tag = models.Tag.objects.get(id=tag)
         return render(request, "search_result.html", {"products": products, "tag": tag})
 
 
-def search(request):
-    print("ㅅㅓ치시작")
-    title = request.GET.get("title", "")
-    project_type = int(request.GET.get("project_type", 0))
-    type = int(request.GET.get("type", 0))
-    createdAt = int(request.GET.get("createdAt", 0))
-    price = int(request.GET.get("price", 0))
-    form = {
-        "title": title,
-        "s_project_types": project_type,
-        "s_types": type,
-        "createdAt": createdAt,
-        "price": price,
-    }
-    projectTypes = models.ProjectType.objects.all()
-    print(form)
-    types = models.Type.objects.all()
-    choices = {
-        "project_types": projectTypes,
-        "types": types,
-    }
-    filter_args = {}
-    if title != "":
-        filter_args["title__startswith"] = title
-    if project_type != 0:
-        filter_args["project_type__pk"] = project_type
-    if type != 0:
-        filter_args["type__pk"] = type
-    products = []
-    if createdAt is True:
-        # filter_args["type__pk"] = type
-        products = models.Product.objects.filter(**filter_args).order_by(
-            "-creationDate"
-        )
-    else:
-        products = models.Product.objects.filter(**filter_args).order_by("creationDate")
-    if price is True:
-        # filter_args["type__pk"] = type
-        products = models.Product.objects.filter(**filter_args).order_by("-price")
-    else:
-        products = models.Product.objects.filter(**filter_args).order_by("price")
+# def search(request):
+#     print("ㅅㅓ치시작", request.GET)
+#     title = request.GET.get("title", "")
+#     project_type = int(request.GET.get("project_type", 0))
+#     type = int(request.GET.get("type", 0))
+#     createdAt = int(request.GET.get("createdAt", 0))
+#     price = int(request.GET.get("price", 0))
+#     form = {
+#         "title": title,
+#         "s_project_types": project_type,
+#         "s_types": type,
+#         "createdAt": createdAt,
+#         "price": price,
+#     }
+#     projectTypes = models.ProjectType.objects.all()
+#     print(form)
+#     types = models.Type.objects.all()
+#     choices = {
+#         "project_types": projectTypes,
+#         "types": types,
+#     }
+#     filter_args = {}
+#     if title != "":
+#         filter_args["title__startswith"] = title
+#     if project_type != 0:
+#         filter_args["project_type__pk"] = project_type
+#     if type != 0:
+#         filter_args["type__pk"] = type
+#     products = []
+#     if createdAt is True:
+#         # filter_args["type__pk"] = type
+#         products = models.Product.objects.filter(**filter_args).order_by(
+#             "-creationDate"
+#         )
+#     else:
+#         products = models.Product.objects.filter(**filter_args).order_by("creationDate")
+#     if price is True:
+#         # filter_args["type__pk"] = type
+#         products = models.Product.objects.filter(**filter_args).order_by("-price")
+#     else:
+#         products = models.Product.objects.filter(**filter_args).order_by("price")
 
-    # if len(s_project_types) > 0:
-    #     for s_project_type in s_project_types:
-    #         filter_args["project_types__pk"] = int(s_project_type)
+#     # if len(s_project_types) > 0:
+#     #     for s_project_type in s_project_types:
+#     #         filter_args["project_types__pk"] = int(s_project_type)
 
-    print(products)
-    print("ㅅㅓ치끝")
-    return render(
-        request, "products/search.html", {**form, **choices, "products": products}
-    )
+#     print(products)
+#     print("ㅅㅓ치끝")
+#     return render(
+#         request, "products/search.html", {**form, **choices, "products": products}
+#     )
 
 
 # class SearchView(View):
