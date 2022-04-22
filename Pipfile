@@ -12,7 +12,11 @@ django-storages = "*"
 boto3 = "*"
 django-sendgrid-v5 = "*"
 Django = "==3.2"
-django-responsive2 = "*"
+django-responsive = "*"
+pyyaml = "*"
+ua-parser = "*"
+user-agents = "*"
+django-user-agents = "*"
 
 [dev-packages]
 

@@ -90,7 +90,12 @@ class ProductView(ListView):
         context["artists"] = artist
         context["types"] = types
         context["form"] = form
-
+        user_agent = self.request.META["HTTP_USER_AGENT"]
+        keywords = ["Mobile", "Opera Mini", "Android"]
+        if self.request.user_agent.is_mobile:
+            context["is_mobile"] = True
+        else:
+            context["is_mobile"] = False
         return context
 
 

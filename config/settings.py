@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-from re import T
+from django.utils.translation import ugettext_lazy as _
 import sys
 import dj_database_url
 from pathlib import Path
@@ -62,6 +62,7 @@ PROJECT_APPS = [
 THIRDPARTY_APPS = [
     "storages",
     "responsive",
+    "django_user_agents",
 ]
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRDPARTY_APPS
 MIDDLEWARE = [
@@ -72,10 +73,19 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_user_agents.middleware.UserAgentMiddleware",
 ]
-MIDDLEWARE_CLASSES = ("responsive.middleware.ResponsiveMiddleware",)
+# MIDDLEWARE_CLASSES = ("responsive.middleware.ResponsiveMiddleware",)
 ROOT_URLCONF = "config.urls"
+MIDDLEWARE_CLASSES = (
+    # Other middleware classes go here
+    "responsive.middleware.DeviceInfoMiddleware",
+)
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # Other context processors included here
+    "responsive.context_processors.device_info",
+)
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -87,20 +97,15 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "responsive.context_processors.device",
             ],
         },
     },
 ]
 
-RESPONSIVE_MEDIA_QUERIES = {
-    "small": {
-        "min_width": None,
-        "max_width": 640,
-    },
-    "medium": {
-        "min_width": 641,
-    },
+DEFAULT_BREAKPOINTS = {
+    "phone": 480,
+    "tablet": 767,
+    "desktop": None,
 }
 WSGI_APPLICATION = "config.wsgi.application"
 if DEVELOPMENT_MODE is True:
