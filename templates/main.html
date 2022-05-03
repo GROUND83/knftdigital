@@ -38,7 +38,56 @@
   </div>
 </section>
 {% endif %}
+<!-- the mindSet -->
+<section class="flex flex-col items-center w-full py-24 mx-auto container px-3 lg:px-6">
+  <p class="text-xl font-light text-white">Korean Calligraphic NFT Art</p>
+  <h2 class="mt-2 text-5xl text-white">
+    Mindset
+  </h2>
+  <p class="mt-6 text-lg font-light tracking-wider text-justify text-slate500">We strive to achieve something. We feel rewarded by achieving one by one. However, both those who have achieved a lot and those who have achieved a little say that they are insufficient, anxious, and lonely when looking back on their lives. It is typical of modern people who have lost their minds by coveting materials. What's the point of finding a missing heart only after losing it? Everyone must study self-positive and mind. You have to look around, talk to natural life, and find yourself in it. Writer Lee Cheol-soo's work comforts modern people who want to study their minds. First of all, it is a story handed down by a person who practices mind study and as a writer who writes down the sound of the mind in pictures and writing. He responded to this story with his own story and expressed his hope to continue with the conversation. It contains the desire for a flower to bloom in the conversation.
+  </p>
+  <div class="grid w-full grid-cols-1 lg:grid-cols-3 gap-24 justify-items-center mt-12">
+    {% for product in main_product  %}
+    <div class="relative flex flex-col items-center justify-start col-span-1 overflow-hidden transition-transform duration-200 ease-in-out rounded-lg " style="width: 300px;height: 420px;">
+      <div id="fontCard" class="flex flex-col items-start w-full h-full">
+        <div class="flex flex-col items-center justify-start w-full bg-white" id="card">
+          {% if product.image.content_type == "mp4" %}
+          <video autoplay muted loop playsinline poster="{{product.image.thumnail.url}}" class="object-cover cursor-pointer " style="height: 300px;width: 300px;">
+            <source src="{{product.image.file800.url}}" />
+          </video>
+          {% else %}
+          <img src="{{product.image.file800.url}}" style="height: 300px;width: 300px;" class="cursor-pointer object-cover " />
+          {% endif %}
+        </div>
+        <div class="flex flex-col items-start w-full p-3 bg-gray-200" style="height: 120px;width: 300px;">
+          <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
+          <div class="flex flex-row items-end justify-between w-full">
+            <div class="flex flex-col items-start">
+              <p class="">Reserve Price</p>
+              <p class="text-xl font-bold">{{product.price}} ETH</p>
+            </div>
+            <a href="/author/{{product.author.id}}" class="flex flex-col items-center cursor-pointer">
+              <img src="{{product.author.avator.thumnail.url}}" style="width: 40px;height: 40px;" class="border-2 rounded-full border-primary" />
+              <p>{{product.author}}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="/product/{{product.id}}" id="backCard" class="flex-col items-start justify-between hidden w-full h-full p-6 transition-all duration-200 ease-in-out opacity-0 cursor-pointer bg-primary">
 
+        <div class="flex flex-col items-start">
+          <p class="text-xl font-bold line-clamp-1">{{product.title}}</p>
+          <p class="mt-3 text-justify line-clamp-4">{{product.description}}</p>
+        </div>
+
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  <a href="/product" class="mt-24 link_btn">
+    More notable NFTs
+  </a>
+</section>
 <!-- the LOVE -->
 <section class="flex flex-col items-center w-full py-24 mx-auto container px-3 lg:px-6">
   <p class="text-xl font-light text-white">Korean Calligraphic NFT Art</p>

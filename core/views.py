@@ -9,12 +9,17 @@ from authors.models import Author
 def get_product(request):
 
     firtModel = Product.objects.order_by("?").first()
-    main_product = Product.objects.filter(main=True)
+    main_product = Product.objects.filter(main=True)[:9]
+    mindsets = Product.objects.filter(author="Lee Chul-soo")[:6]
 
     return render(
         request,
         "main.html",
-        context={"main_product": main_product, "first_product": firtModel},
+        context={
+            "main_product": main_product,
+            "first_product": firtModel,
+            "midsets": mindsets,
+        },
     )
 
     # qs=None -- do some here when qs is not found
