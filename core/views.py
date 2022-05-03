@@ -8,7 +8,7 @@ from authors.models import Author
 # Create your views here.
 def get_product(request):
 
-    firtModel = Product.objects.all().first()
+    firtModel = Product.objects.order_by("?").first()
     main_product = Product.objects.filter(main=True)[:6]
 
     mindsets = Product.objects.filter(author=11)[:6]
