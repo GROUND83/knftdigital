@@ -10,7 +10,8 @@ def get_product(request):
 
     firtModel = Product.objects.all().first()
     main_product = Product.objects.filter(main=True)[:9]
-    mindsets = Product.objects.filter(author="Lee Chul-soo")[:6]
+
+    mindsets = Product.objects.filter(author_pk=11)[:6]
 
     return render(
         request,
