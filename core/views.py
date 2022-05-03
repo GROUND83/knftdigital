@@ -9,7 +9,7 @@ from authors.models import Author
 def get_product(request):
 
     firtModel = Product.objects.all().first()
-    main_product = Product.objects.filter(main=True)[:9]
+    main_product = Product.objects.filter(main=True)[:6]
 
     mindsets = Product.objects.filter(author=11)[:6]
 
