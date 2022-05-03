@@ -19,7 +19,7 @@ def get_product(request):
         context={
             "main_product": main_product,
             "first_product": firtModel,
-            "midsets": mindsets,
+            "mindsets": mindsets,
         },
     )
 
