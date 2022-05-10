@@ -5,9 +5,8 @@
   <a href="{% url "cores:home" %}">
     <img src="{% static 'img/logo.svg' %}" style="width:100px" />
   </a>
-  <nav class="h-full text-white mt-3 lg:mt-0">
+  <nav class="h-full text-white mt-3 lg:mt-0 flex flex-col lg:flex-row items-center">
     <ul class="flex items-center h-full text-sm font-medium">
-
       <li class="lg:ml-6">
         <a href="{% url "products:productList" %}" class=" hover:text-primary">COLLECTION</a>
       </li>
@@ -15,11 +14,33 @@
         <a href="{% url "cores:about" %}" class=" hover:text-primary">ABOUT</a>
       </li>
       <li class="ml-6">
-
         <a href="{% url "contacts:contact" %}" class=" hover:text-primary">CONTACT</a>
       </li>
     </ul>
-
-
+    <div class="flex flex-row items-center bg-slate500 rounded-md lg:ml-12">
+      <form id="form" method="get" action="{% url "products:search" %}" class="flex flex-row items-center">
+        <div class=" flex flex-col items-start ">
+          <input value="{{form.title}}" id="title" name="title" placeholder="Search by title" class="text-balck bg-transparent rounded-md w-full px-2 py-2 outline-none" style="height: 40px;" />
+        </div>
+        <div class="flex flex-col items-center ">
+          <button class="px-3 py-2 w-full rounded-md" style="height: 40px;"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+      <script>
+        const form = document.querySelector("#form")
+        form.addEventListener('submit', (event) => {
+          // console.log(event.target.value)
+          event.preventDefault();
+          // document.getElementById('form').submit()
+          const title = document.querySelector("#title")
+          console.log(title.value)
+          if (!title.value) {
+            alert("title is empty")
+          } else {
+            form.submit()
+          }
+        });
+      </script>
+    </div>
   </nav>
 </div>

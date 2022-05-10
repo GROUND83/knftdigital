@@ -103,8 +103,8 @@
   {% else %}
 
   <div class="flex flex-col items-center justify-center py-3  px-3 container px-3 lg:px-6 mx-auto mt-3 w-full">
-    <form name="myForm" method="GET" action="{% url "products:productList" %}" class="w-full">
-      <div class=" grid grid-cols-3 lg:grid-cols-10 gap-3 w-full ">
+    <form id="form" name="myForm" method="GET" action="{% url "products:productList" %}" class="w-full">
+      <div class=" grid grid-cols-3 lg:grid-cols-9 gap-3 w-full ">
         <div class="flex flex-row items-center col-span-1 lg:col-span-3 ">
           <label for="sort" class="text-slate500 col-span-1">Sort By</label>
           <select id="sort" name="sort" class="flex-1 px-3 py-2 bg-slate500  rounded-md ml-3" style="height:40px;">
@@ -121,8 +121,9 @@
               Price:high to low
             </option>
           </select>
+
         </div>
-        <div class=" flex flex-col items-start col-span-1 lg:col-span-2">
+        <div class=" flex flex-col items-start col-span-1 lg:col-span-3">
           <select id="artists" name="artists" class="flex-1 px-3 py-2 bg-slate500  rounded-md w-full" style="height:40px;">
             <option value="0" {% if form.s_artist == 0 %}selected{% endif %}>
               Seacrh by artist
@@ -133,7 +134,7 @@
           </select>
 
         </div>
-        <div class="flex flex-col items-start   col-span-1 lg:col-span-2">
+        <div class="flex flex-col items-start   col-span-1 lg:col-span-3">
 
           <select id="project_type" name="project_type" class="px-3 py-2 bg-slate500  rounded-md w-full " style="height: 40px;">
             <option value="0" {% if form.s_project_types == 0 %}selected{% endif %}>Search by Project</option>
@@ -142,12 +143,12 @@
             {% endfor %}
           </select>
         </div>
-        <div class=" flex flex-col items-start col-span-1 lg:col-span-2 ">
+        <!-- <div class=" flex flex-col items-start col-span-1 lg:col-span-2 ">
           <input value="{{form.searchtext}}" id="searchtext" name="searchtext" placeholder="Search.." class="text-balck bg-slate500  rounded-md w-full px-2 py-2 " style="height: 40px;" />
         </div>
         <div class="flex flex-col items-center justify-end col-span-1 lg:col-span-1">
           <button class="px-3 py-2 bg-slate500 w-full rounded-md" style="height: 40px;"><i class="bi bi-search"></i></button>
-        </div>
+        </div> -->
       </div>
       <div class="flex flex-row items-center justify-center mt-6 divide-x divide-slate700 ">
         <div class="px-3">
@@ -164,7 +165,53 @@
     </form>
   </div>
   {% endif %}
-
+  <script>
+    const sort = document.getElementById('sort')
+    sort.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const artists = document.getElementById('artists')
+    artists.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const project_type = document.getElementById('project_type')
+    project_type.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const all = document.getElementById('all')
+    all.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const notable = document.getElementById('Notable')
+    notable.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const caligraphy = document.getElementById('Caligraphy')
+    caligraphy.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const engraving = document.getElementById('Engraving')
+    engraving.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const illustration = document.getElementById('Illustration')
+    illustration.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+    const photography = document.getElementById('Photography')
+    photography.addEventListener('change', (event) => {
+      // console.log(event.target.value)
+      document.getElementById('form').submit()
+    });
+  </script>
   <section class="mt-24 container mx-auto pb-12">
 
     {% if products.count > 0 %}
